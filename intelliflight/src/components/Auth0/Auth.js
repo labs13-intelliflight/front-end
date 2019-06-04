@@ -1,6 +1,7 @@
 import history from './history';
 import auth0 from 'auth0-js';
-import { AUTH_CONFIG } from './auth0-variables';
+
+
 
 export default class Auth {
   accessToken;
@@ -8,9 +9,12 @@ export default class Auth {
   expiresAt;
 
   auth0 = new auth0.WebAuth({
-    domain: AUTH_CONFIG.domain,
-    clientID: AUTH_CONFIG.clientId,
-    redirectUri: AUTH_CONFIG.callbackUrl,
+    // domain: AUTH_CONFIG.domain,
+    domain: process.env.REACT_APP_DOMAIN,
+    // clientID: AUTH_CONFIG.clientId,
+    clientID: process.env.REACT_APP_CLIENT_ID,
+    // redirectUri: AUTH_CONFIG.callbackUrl,
+    redirectUri: process.env.REACT_APP_CALLBACK_URL,
     responseType: 'token id_token',
     scope: 'openid'
   });
