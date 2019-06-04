@@ -5,14 +5,13 @@ import {
   withGoogleMap,
   Marker
 } from "react-google-maps";
-import airportData from "../data/airports.json";
+// import airportData from "../data/airports.json";
 import pirepData from "../data/pireps-data.json";
 import mapStyles from "./mapStyles"
 import weatherIcon from "./weather-icon"
 
 
 function Map() {
-  let two = "https://cdn4.iconfinder.com/data/icons/iconjoy_weather/shadow/standart/png/003_01.png";
   // console.log(airportData.airports.map(airport => airport.name));
   return (
     <div>
