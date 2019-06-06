@@ -30,7 +30,7 @@ class App extends Component {
 
     return (
       <div>
-        <Navbar>
+        <Navbar className="nav-bar">
           <div>
             <Navbar.Brand>
               <p>IntelliFlight</p>
