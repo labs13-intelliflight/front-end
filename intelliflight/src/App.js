@@ -4,8 +4,6 @@ import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './components/Stripe/CheckoutForm';
 import './App.css';
 
-
-
 class App extends Component {
   goTo(route) {
     this.props.history.replace(`/${route}`)
@@ -70,7 +68,7 @@ class App extends Component {
             }
           </div>
         </Navbar>
-        <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+        <StripeProvider apiKey={`process.env.REACT_APP_STRIPE_KEY`}>
         <div className="example">
           <h1>Intelliflight</h1>
           <Elements>

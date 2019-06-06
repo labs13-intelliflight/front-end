@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import TestMap from "../map/map";
+import PirepMap from "../map/map";
+
 class Home extends Component {
   login() {
     this.props.auth.login();
@@ -12,7 +13,7 @@ class Home extends Component {
           <div>
             <h4>You are logged in!</h4>
             <div>Intelliflight map</div>
-            <TestMap />
+            <PirepMap />
           </div>
         )}
         {!isAuthenticated() && (
