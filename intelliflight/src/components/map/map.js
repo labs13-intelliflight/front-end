@@ -5,7 +5,6 @@ import {
   withGoogleMap,
   Marker
 } from "react-google-maps";
-// import airportData from "./data/airports.json";
 import mapStyles from "./mapStyles"
 import weatherIcon from "./weather-icon"
 import Axios from "axios";
@@ -30,26 +29,15 @@ class PirepMap extends React.Component {
   Map = () => {
     return (
       <div>
-        {/* {airportData.airports.map(airport => airport.lat)} */}
   
         <GoogleMap
           defaultZoom={4}
           defaultCenter={{ lat: 40.7306, lng: -73.9352 }}
           defaultOptions={{styles: mapStyles}}
         >
-          {/* {airportData.airports.filter(airport => airport.country === "United States").map(airport => (
-          <Marker
-            key={airport.code}
-            position={{
-              lat: parseInt(airport.lat),
-              lng: parseInt(airport.lon)
-            }}
-          />
-  
-        ))} */}
         
           {this.state.pirepData
-            .filter(pirep => pirep.weather > 0)
+            // .filter(pirep => pirep.weather > 0)
             .map(pirep => (
               <Marker
                 key={pirep.id}
