@@ -3,6 +3,7 @@ import { Navbar, Button } from 'react-bootstrap';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './components/Stripe/CheckoutForm';
 import './App.css';
+import intelliflightLogoWhite from '../src/images/intelliflight-logo v1.png'
 
 class App extends Component {
   goTo(route) {
@@ -29,11 +30,12 @@ class App extends Component {
     const { isAuthenticated } = this.props.auth;
 
     return (
-      <div>
-        <Navbar>
+      <div className="page-border">
+        <Navbar className="nav-bar">
           <div>
-            <Navbar.Brand>
-              <p>IntelliFlight</p>
+            <Navbar.Brand className="top-logo">
+              <img src={intelliflightLogoWhite} className="white-wings"/>
+              <p className="logo-title">IntelliFlight</p>
             </Navbar.Brand>
             <Button
               bsstyle="primary"
