@@ -4,6 +4,8 @@ import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './components/Stripe/CheckoutForm';
 import './App.css';
 import intelliflightLogoWhite from '../src/images/intelliflight-logo v1.png'
+// import PirepMap from './components/map/map.js'
+
 
 class App extends Component {
   goTo(route) {
@@ -34,9 +36,10 @@ class App extends Component {
         <Navbar className="nav-bar">
           <div>
             <Navbar.Brand className="top-logo">
-              <img src={intelliflightLogoWhite} className="white-wings"/>
+              <img src={intelliflightLogoWhite} className="white-wings" alt=""/>
               <p className="logo-title">IntelliFlight</p>
             </Navbar.Brand>
+            {/* <PirepMap/> */}
             <Button
               bsstyle="primary"
               className="btn-margin"

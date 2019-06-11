@@ -6,8 +6,9 @@ import {
   Marker
 } from "react-google-maps";
 import mapStyles from "./mapStyles"
-import weatherIcon from "./weather-icon"
+// import weatherIcon from "./weather-icon"
 import Axios from "axios";
+import turbIcon from './turbulence.js'
 
 class PirepMap extends React.Component {
   state = {
@@ -46,7 +47,8 @@ class PirepMap extends React.Component {
                   lng: pirep.longitude
                 }}
                 icon={{
-                  url: weatherIcon(pirep.weather),
+                  // url: turbIcon(pirep.weatherIcon),
+                  url: turbIcon(pirep.turbulence),
                   scaledSize: new window.google.maps.Size(25, 25)
                 }}
               />
