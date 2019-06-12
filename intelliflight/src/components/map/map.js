@@ -11,6 +11,8 @@ import mapStyles from "./mapStyles"
 import weatherIcon from "./weather-icon"
 import Axios from "axios";
 
+// Set global variables for start and destination
+
 let start;
 let destination;
 
@@ -40,6 +42,8 @@ class PirepMap extends React.Component {
       destination: destination
     })
   }
+
+  // Creates Google map
 
   Map = () => {
     return (
@@ -82,6 +86,8 @@ class PirepMap extends React.Component {
     );
   }
 
+  // Google Map configuration
+
   TestMap = () => {
 
     const MapWrapped = withScriptjs(withGoogleMap(this.Map));
@@ -103,6 +109,9 @@ class PirepMap extends React.Component {
   render() {
     return (
       <>
+
+      {/* Flight plan submission form */}
+
         <h4>Plan Your Flight</h4>
         <form onSubmit={this.submitFlightPlan}>
           <p>Starting Point</p>
@@ -129,6 +138,9 @@ class PirepMap extends React.Component {
           />
           <button>Submit</button>
         </form>
+
+        {/* Renders Google Map */}
+        
         {this.TestMap()}
       </>
     )
