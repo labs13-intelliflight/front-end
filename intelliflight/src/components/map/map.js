@@ -6,6 +6,7 @@ import {
   Marker,
   Polyline
 } from "react-google-maps";
+import { GoogleComponent } from 'react-google-location';
 import mapStyles from "./mapStyles"
 // import weatherIcon from "./weather-icon"
 import Axios from "axios";
