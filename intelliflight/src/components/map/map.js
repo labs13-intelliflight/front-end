@@ -6,10 +6,10 @@ import {
   Marker,
   Polyline
 } from "react-google-maps";
-import { GoogleComponent } from 'react-google-location';
 import mapStyles from "./mapStyles"
-import weatherIcon from "./weather-icon"
+// import weatherIcon from "./weather-icon"
 import Axios from "axios";
+import turbIcon from './turbulence.js'
 
 // Set global variables for start and destination
 
@@ -48,6 +48,7 @@ class PirepMap extends React.Component {
   Map = () => {
     return (
       <div>
+  
         <GoogleMap
           defaultZoom={4}
           defaultCenter={{ lat: 40.7306, lng: -73.9352 }}
@@ -55,7 +56,7 @@ class PirepMap extends React.Component {
         >
         
           {this.state.pirepData
-            .filter(pirep => pirep.weather > 0)
+            // .filter(pirep => pirep.weather > 0)
             .map(pirep => (
               <Marker
                 key={pirep.id}
@@ -64,7 +65,8 @@ class PirepMap extends React.Component {
                   lng: pirep.longitude
                 }}
                 icon={{
-                  url: weatherIcon(pirep.weather),
+                  // url: turbIcon(pirep.weatherIcon),
+                  url: turbIcon(pirep.turbulence),
                   scaledSize: new window.google.maps.Size(25, 25)
                 }}
               />
