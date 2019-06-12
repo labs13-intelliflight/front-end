@@ -3,16 +3,22 @@ import {
   GoogleMap,
   withScriptjs,
   withGoogleMap,
-  Marker
+  Marker,
+  Polyline
 } from "react-google-maps";
-// import airportData from "./data/airports.json";
+import { GoogleComponent } from 'react-google-location';
 import mapStyles from "./mapStyles"
 import weatherIcon from "./weather-icon"
 import Axios from "axios";
 
+let start;
+let destination;
+
 class PirepMap extends React.Component {
   state = {
-    pirepData: []
+    pirepData: [],
+    start: null,
+    destination: null
   }
 
   componentDidMount() {
@@ -27,26 +33,22 @@ class PirepMap extends React.Component {
       })
   }
 
+  submitFlightPlan = event => {
+    event.preventDefault();
+    this.setState({
+      start: start,
+      destination: destination
+    })
+  }
+
   Map = () => {
     return (
       <div>
-        {/* {airportData.airports.map(airport => airport.lat)} */}
-  
         <GoogleMap
           defaultZoom={4}
           defaultCenter={{ lat: 40.7306, lng: -73.9352 }}
           defaultOptions={{styles: mapStyles}}
         >
-          {/* {airportData.airports.filter(airport => airport.country === "United States").map(airport => (
-          <Marker
-            key={airport.code}
-            position={{
-              lat: parseInt(airport.lat),
-              lng: parseInt(airport.lon)
-            }}
-          />
-  
-        ))} */}
         
           {this.state.pirepData
             .filter(pirep => pirep.weather > 0)
@@ -63,6 +65,18 @@ class PirepMap extends React.Component {
                 }}
               />
             ))}
+
+            {this.state.start && this.state.destination && (
+              <Polyline
+                path={[{lat: this.state.start.coordinates.lat, lng: this.state.start.coordinates.lng}, {lat: this.state.destination.coordinates.lat, lng: this.state.destination.coordinates.lng}]}
+                geodesic={true}
+                options={{
+                    strokeColor: "#ff2527",
+                    strokeOpacity: 0.75,
+                    strokeWeight: 5,
+                }}
+              />
+            )}
         </GoogleMap>
       </div>
     );
@@ -89,6 +103,32 @@ class PirepMap extends React.Component {
   render() {
     return (
       <>
+        <h4>Plan Your Flight</h4>
+        <form onSubmit={this.submitFlightPlan}>
+          <p>Starting Point</p>
+          <GoogleComponent
+            apiKey={process.env.REACT_APP_GOOGLE_KEY}
+            language={'en'}
+            coordinates={true}
+            locationBoxStyle={'custom-style'}
+            locationListStyle={'custom-style-list'}
+            onChange={event => {
+              start = event;
+            }}
+          />
+          <p>Destination</p>
+          <GoogleComponent
+            apiKey={process.env.REACT_APP_GOOGLE_KEY}
+            language={'en'}
+            coordinates={true}
+            locationBoxStyle={'custom-style'}
+            locationListStyle={'custom-style-list'}
+            onChange={event => {
+              destination = event;
+            }}
+          />
+          <button>Submit</button>
+        </form>
         {this.TestMap()}
       </>
     )
