@@ -4,7 +4,8 @@ import {
   withScriptjs,
   withGoogleMap,
   Marker,
-  Polyline
+  Polyline,
+  InfoWindow
 } from "react-google-maps";
 import { GoogleComponent } from "react-google-location";
 import mapStyles from "./mapStyles";
@@ -16,12 +17,14 @@ import distance from "./functions/distance-calculator";
 
 let start;
 let destination;
+// let selectedPirep;
 
 class PirepMap extends React.Component {
   state = {
     pirepData: [],
     start: null,
-    destination: null
+    destination: null,
+    selectedPirep: null
   };
 
   componentDidMount() {
@@ -41,6 +44,13 @@ class PirepMap extends React.Component {
     this.setState({
       start: start,
       destination: destination
+    });
+  };
+
+  onClickMarker = pirep => {
+    // event.preventDefault();
+    this.setState({
+      selectedPirep: pirep
     });
   };
 
@@ -74,6 +84,16 @@ class PirepMap extends React.Component {
                 background: "white",
                 margin: "10px"
               }}
+              // onClick={event => {
+              //   event.preventDefault();
+              //   this.setState({
+              //     selectedPirep : pirep
+              //   })
+              // }}
+              onClick={() => {
+                this.onClickMarker(pirep);
+                console.log(pirep);
+              }}
             />
           ))}
 
@@ -96,6 +116,23 @@ class PirepMap extends React.Component {
                 strokeWeight: 5
               }}
             />
+          )}
+          {this.state.selectedPirep && (
+            <InfoWindow
+              position={{
+                lat: this.state.selectedPirep.latitude,
+                lng: this.state.selectedPirep.longitude
+              }}
+            >
+              <div>
+              <p>report</p>
+              <p>altitude: {this.state.selectedPirep.altitude},000 feet</p>
+              <p>description: {this.state.selectedPirep.description}</p>
+              <p>icing: {this.state.selectedPirep.icing}</p>
+              <p>latitude: {this.state.selectedPirep.latitude}</p>
+              <p> longitude: {this.state.selectedPirep.longitude} </p>
+              <p> turbulence: {this.state.selectedPirep.turbulence}</p></div>
+            </InfoWindow>
           )}
         </GoogleMap>
       </div>
