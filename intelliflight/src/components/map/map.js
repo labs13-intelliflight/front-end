@@ -6,11 +6,11 @@ import {
   Marker,
   Polyline
 } from "react-google-maps";
-import { GoogleComponent } from 'react-google-location';
-import mapStyles from "./mapStyles"
-// import weatherIcon from "./weather-icon"
+import { GoogleComponent } from "react-google-location";
+import mapStyles from "./mapStyles";
 import Axios from "axios";
-import turbIcon from './turbulence.js'
+import turbIcon from "./functions/turbulence.js";
+import distance from "./functions/distance-calculator";
 
 // Set global variables for start and destination
 
@@ -22,18 +22,18 @@ class PirepMap extends React.Component {
     pirepData: [],
     start: null,
     destination: null
-  }
+  };
 
   componentDidMount() {
-    Axios.get('https://intelliflight-api.onrender.com/api/pireps')
+    Axios.get("https://intelliflight-api.onrender.com/api/pireps")
       .then(res => {
         this.setState({
           pirepData: res.data
-        })
+        });
       })
       .catch(err => {
-        console.log(err)
-      })
+        console.log(err);
+      });
   }
 
   submitFlightPlan = event => {
@@ -41,60 +41,72 @@ class PirepMap extends React.Component {
     this.setState({
       start: start,
       destination: destination
-    })
-  }
+    });
+  };
 
   // Creates Google map
 
   Map = () => {
     return (
       <div>
-  
         <GoogleMap
           defaultZoom={4}
           defaultCenter={{ lat: 40.7306, lng: -73.9352 }}
-          defaultOptions={{styles: mapStyles}}
+          defaultOptions={{ styles: mapStyles }}
         >
-        
-          {this.state.pirepData
-            // .filter(pirep => pirep.weather > 0)
-            .map(pirep => (
-              <Marker
-                key={pirep.id}
-                position={{
-                  lat: pirep.latitude,
-                  lng: pirep.longitude
-                }}
-                icon={{
-                  // url: turbIcon(pirep.weatherIcon),
-                  url: turbIcon(pirep.turbulence),
-                  scaledSize: new window.google.maps.Size(25, 25)
-                }}
-              />
-            ))}
+          {this.state.pirepData.map(pirep => (
+            <Marker
+              key={pirep.id}
+              position={{
+                lat: pirep.latitude,
+                lng: pirep.longitude
+              }}
+              icon={{
+                url: turbIcon(pirep.turbulence),
+                scaledSize: new window.google.maps.Size(30, 40)
+              }}
+              label={{
+                float: "left",
+                color: "black",
+                fontWeight: "bold",
+                fontSize: "12px",
+                text: pirep.altitude,
+                background: "white",
+                margin: "10px"
+              }}
+            />
+          ))}
 
-            {this.state.start && this.state.destination && (
-              <Polyline
-                path={[{lat: this.state.start.coordinates.lat, lng: this.state.start.coordinates.lng}, {lat: this.state.destination.coordinates.lat, lng: this.state.destination.coordinates.lng}]}
-                geodesic={true}
-                options={{
-                    strokeColor: "#ff2527",
-                    strokeOpacity: 0.75,
-                    strokeWeight: 5,
-                }}
-              />
-            )}
+          {this.state.start && this.state.destination && (
+            <Polyline
+              path={[
+                {
+                  lat: this.state.start.coordinates.lat,
+                  lng: this.state.start.coordinates.lng
+                },
+                {
+                  lat: this.state.destination.coordinates.lat,
+                  lng: this.state.destination.coordinates.lng
+                }
+              ]}
+              geodesic={true}
+              options={{
+                strokeColor: "#ff2527",
+                strokeOpacity: 0.75,
+                strokeWeight: 5
+              }}
+            />
+          )}
         </GoogleMap>
       </div>
     );
-  }
+  };
 
   // Google Map configuration
 
   TestMap = () => {
-
     const MapWrapped = withScriptjs(withGoogleMap(this.Map));
-    
+
     return (
       <div style={{ width: "100vw", height: "90vh" }}>
         <MapWrapped
@@ -107,23 +119,43 @@ class PirepMap extends React.Component {
         />
       </div>
     );
-  }
+  };
+
+  // distance function if else
+
+  calulatedDistance = () => {
+    if (this.state.start && this.state.destination) {
+      return (
+        <div>
+          <h1>Total Miles:</h1>
+          {distance(
+            this.state.start.coordinates.lat,
+            this.state.start.coordinates.lng,
+            this.state.destination.coordinates.lat,
+            this.state.destination.coordinates.lng,
+            "N"
+          )}
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
 
   render() {
     return (
-      <>
-
-      {/* Flight plan submission form */}
+      <div>
+        {/* Flight plan submission form */}
 
         <h4>Plan Your Flight</h4>
         <form onSubmit={this.submitFlightPlan}>
           <p>Starting Point</p>
           <GoogleComponent
             apiKey={process.env.REACT_APP_GOOGLE_KEY}
-            language={'en'}
+            language={"en"}
             coordinates={true}
-            locationBoxStyle={'custom-style'}
-            locationListStyle={'custom-style-list'}
+            locationBoxStyle={"custom-style"}
+            locationListStyle={"custom-style-list"}
             onChange={event => {
               start = event;
             }}
@@ -131,10 +163,10 @@ class PirepMap extends React.Component {
           <p>Destination</p>
           <GoogleComponent
             apiKey={process.env.REACT_APP_GOOGLE_KEY}
-            language={'en'}
+            language={"en"}
             coordinates={true}
-            locationBoxStyle={'custom-style'}
-            locationListStyle={'custom-style-list'}
+            locationBoxStyle={"custom-style"}
+            locationListStyle={"custom-style-list"}
             onChange={event => {
               destination = event;
             }}
@@ -142,11 +174,15 @@ class PirepMap extends React.Component {
           <button>Submit</button>
         </form>
 
+        {/* will display distance */}
+
+        {this.calulatedDistance()}
+
         {/* Renders Google Map */}
-        
+
         {this.TestMap()}
-      </>
-    )
+      </div>
+    );
   }
 }
 

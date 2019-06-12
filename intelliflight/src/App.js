@@ -37,7 +37,7 @@ class App extends Component {
               <img src={intelliflightLogoWhite} className="white-wings" alt=""/>
               <p className="logo-title">IntelliFlight</p>
             </Navbar.Brand>
-            {/* <PirepMap/> */}
+            
             <Button
               bsstyle="primary"
               className="btn-margin"
@@ -74,6 +74,7 @@ class App extends Component {
         <div className="example">
           <h1>Intelliflight</h1>
         </div>
+        {/* <PirepMap/> */}
       </div>
     );
   }
