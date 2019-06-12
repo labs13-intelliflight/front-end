@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
+import intelliflightLogoWhite from '../src/images/intelliflight-logo v1.png'
+// import PirepMap from './components/map/map.js'
+
 
 class App extends Component {
   goTo(route) {
@@ -27,12 +30,14 @@ class App extends Component {
     const { isAuthenticated } = this.props.auth;
 
     return (
-      <div>
-        <Navbar>
+      <div className="page-border">
+        <Navbar className="nav-bar">
           <div>
-            <Navbar.Brand>
-              <p>IntelliFlight</p>
+            <Navbar.Brand className="top-logo">
+              <img src={intelliflightLogoWhite} className="white-wings" alt=""/>
+              <p className="logo-title">IntelliFlight</p>
             </Navbar.Brand>
+            {/* <PirepMap/> */}
             <Button
               bsstyle="primary"
               className="btn-margin"
