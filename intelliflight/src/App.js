@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
-import {Elements, StripeProvider} from 'react-stripe-elements';
-import CheckoutForm from './components/Stripe/CheckoutForm';
 import './App.css';
 import intelliflightLogoWhite from '../src/images/intelliflight-logo v1.png'
 // import PirepMap from './components/map/map.js'
@@ -73,14 +71,9 @@ class App extends Component {
             }
           </div>
         </Navbar>
-        <StripeProvider apiKey={`process.env.REACT_APP_STRIPE_KEY`}>
         <div className="example">
           <h1>Intelliflight</h1>
-          <Elements>
-            <CheckoutForm />
-          </Elements>
         </div>
-      </StripeProvider>
       </div>
     );
   }
