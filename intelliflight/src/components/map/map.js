@@ -10,8 +10,13 @@ import {
 import { GoogleComponent } from "react-google-location";
 import mapStyles from "./mapStyles";
 import Axios from "axios";
-import turbIcon from "./functions/turbulence.js";
+// functions import
+import WeatherIcon from "./functions/weather-icon.js";
+import IcingIcon from "./functions/icing.js";
+import TurbIcon from "./functions/turbulence.js";
 import distance from "./functions/distance-calculator";
+
+import PostForm from "../forms/postForm.js";
 
 // Set global variables for start and destination
 
@@ -72,7 +77,10 @@ class PirepMap extends React.Component {
                 lng: pirep.longitude
               }}
               icon={{
-                url: turbIcon(pirep.turbulence),
+                url:
+                  TurbIcon(pirep.turbulence) ||
+                  IcingIcon(pirep.icing) ||
+                  WeatherIcon(pirep.weather),
                 scaledSize: new window.google.maps.Size(30, 40)
               }}
               label={{
@@ -125,13 +133,14 @@ class PirepMap extends React.Component {
               }}
             >
               <div>
-              <p>report</p>
-              <p>altitude: {this.state.selectedPirep.altitude},000 feet</p>
-              <p>description: {this.state.selectedPirep.description}</p>
-              <p>icing: {this.state.selectedPirep.icing}</p>
-              <p>latitude: {this.state.selectedPirep.latitude}</p>
-              <p> longitude: {this.state.selectedPirep.longitude} </p>
-              <p> turbulence: {this.state.selectedPirep.turbulence}</p></div>
+                <p>report</p>
+                <p>altitude: {this.state.selectedPirep.altitude},000 feet</p>
+                <p>description: {this.state.selectedPirep.description}</p>
+                <p>icing: {this.state.selectedPirep.icing}</p>
+                <p>latitude: {this.state.selectedPirep.latitude}</p>
+                <p> longitude: {this.state.selectedPirep.longitude} </p>
+                <p> turbulence: {this.state.selectedPirep.turbulence}</p>
+              </div>
             </InfoWindow>
           )}
         </GoogleMap>
@@ -182,41 +191,45 @@ class PirepMap extends React.Component {
   render() {
     return (
       <div>
-        {/* Flight plan submission form */}
+        <div className="top-content">
+          <div className="plan-distance">
+            {/* Flight plan submission form */}
+            <h4>Plan Your Flight</h4>
+            <form onSubmit={this.submitFlightPlan}>
+              <p>Starting Point</p>
+              <GoogleComponent
+                apiKey={process.env.REACT_APP_GOOGLE_KEY}
+                language={"en"}
+                coordinates={true}
+                locationBoxStyle={"custom-style"}
+                locationListStyle={"custom-style-list"}
+                onChange={event => {
+                  start = event;
+                }}
+              />
+              <p>Destination</p>
+              <GoogleComponent
+                apiKey={process.env.REACT_APP_GOOGLE_KEY}
+                language={"en"}
+                coordinates={true}
+                locationBoxStyle={"custom-style"}
+                locationListStyle={"custom-style-list"}
+                onChange={event => {
+                  destination = event;
+                }}
+              />
+              <button>Submit</button>
+            </form>
 
-        <h4>Plan Your Flight</h4>
-        <form onSubmit={this.submitFlightPlan}>
-          <p>Starting Point</p>
-          <GoogleComponent
-            apiKey={process.env.REACT_APP_GOOGLE_KEY}
-            language={"en"}
-            coordinates={true}
-            locationBoxStyle={"custom-style"}
-            locationListStyle={"custom-style-list"}
-            onChange={event => {
-              start = event;
-            }}
-          />
-          <p>Destination</p>
-          <GoogleComponent
-            apiKey={process.env.REACT_APP_GOOGLE_KEY}
-            language={"en"}
-            coordinates={true}
-            locationBoxStyle={"custom-style"}
-            locationListStyle={"custom-style-list"}
-            onChange={event => {
-              destination = event;
-            }}
-          />
-          <button>Submit</button>
-        </form>
+            {/* will display distance */}
 
-        {/* will display distance */}
-
-        {this.calulatedDistance()}
-
+            {this.calulatedDistance()}
+          </div>
+          <div className="postform">
+            <PostForm />
+          </div>
+        </div>
         {/* Renders Google Map */}
-
         {this.TestMap()}
       </div>
     );
