@@ -52,7 +52,7 @@ class PirepMap extends React.Component {
     });
   };
 
-  onClickMarker = pirep => {
+  onClickMarker = (event, pirep) => {
     // event.preventDefault();
     this.setState({
       selectedPirep: pirep
@@ -98,8 +98,8 @@ class PirepMap extends React.Component {
               //     selectedPirep : pirep
               //   })
               // }}
-              onClick={() => {
-                this.onClickMarker(pirep);
+              onClick={(event) => {
+                this.onClickMarker(event, pirep);
                 console.log(pirep);
               }}
             />
@@ -133,13 +133,14 @@ class PirepMap extends React.Component {
               }}
             >
               <div>
-                <p>report</p>
-                <p>altitude: {this.state.selectedPirep.altitude},000 feet</p>
-                <p>description: {this.state.selectedPirep.description}</p>
-                <p>icing: {this.state.selectedPirep.icing}</p>
-                <p>latitude: {this.state.selectedPirep.latitude}</p>
-                <p> longitude: {this.state.selectedPirep.longitude} </p>
-                <p> turbulence: {this.state.selectedPirep.turbulence}</p>
+                <p>Report</p>
+                <p>Altitude: {this.state.selectedPirep.altitude}00 feet</p>
+                <p>Latitude: {this.state.selectedPirep.latitude}</p>
+                <p>Longitude: {this.state.selectedPirep.longitude} </p>
+                <p>Turbulence: {this.state.selectedPirep.turbulence}</p>
+                <p>Icing: {this.state.selectedPirep.icing}</p>
+                <p>Description: {this.state.selectedPirep.description}</p>
+                <p>Weather:<img alt="" src={WeatherIcon(this.state.selectedPirep.weather)}/></p>
               </div>
             </InfoWindow>
           )}
