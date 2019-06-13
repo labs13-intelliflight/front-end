@@ -1,17 +1,17 @@
-import zero from "./weather-icons/0.png";
-import one from "./weather-icons/1.png";
-import two from "./weather-icons/2.png";
-import three from "./weather-icons/3.png";
-import four from "./weather-icons/4.png";
-import five from "./weather-icons/5.png";
-import six from "./weather-icons/6.png";
-import seven from "./weather-icons/7.png";
-import eight from "./weather-icons/8.png";
-import nine from "./weather-icons/9.png";
-import ten from "./weather-icons/10.png";
-import eleven from "./weather-icons/11.png";
+import zero from "../pirep-icons/weather-icons/0.png";
+import one from "../pirep-icons/weather-icons/1.png";
+import two from "../pirep-icons/weather-icons/2.png";
+import three from "../pirep-icons/weather-icons/3.png";
+import four from "../pirep-icons/weather-icons/4.png";
+import five from "../pirep-icons/weather-icons/5.png";
+import six from "../pirep-icons/weather-icons/6.png";
+import seven from "../pirep-icons/weather-icons/7.png";
+import eight from "../pirep-icons/weather-icons/8.png";
+import nine from "../pirep-icons/weather-icons/9.png";
+import ten from "../pirep-icons/weather-icons/10.png";
+import eleven from "../pirep-icons/weather-icons/11.png";
 
-export default function weatherIcon(icon) {
+export default function WeatherIcon(icon) {
   if (icon === 0) {
     return zero;
   }

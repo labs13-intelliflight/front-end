@@ -7,7 +7,7 @@ import moderateSevere from "../pirep-icons/turbulence/moderate-severe.png";
 import severe from "../pirep-icons/turbulence/severe.png";
 import extreme from "../pirep-icons/turbulence/extreme.png";
 
-export default function turbIcon(icon) {
+export default function TurbIcon(icon) {
   if (icon === "nil") {
     return nil;
   }
