@@ -1,7 +1,7 @@
 import history from './history';
 import auth0 from 'auth0-js';
-
-
+import jwtDecode from "jwt-decode";
+import axios from "axios";
 
 export default class Auth {
   accessToken;
@@ -54,8 +54,6 @@ export default class Auth {
   }
 
   setSession(authResult) {
-    // Set isLoggedIn flag in localStorage
-    localStorage.setItem('isLoggedIn', 'true');
   
     // Set the time that the access token will expire at
     let expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
@@ -63,8 +61,34 @@ export default class Auth {
     this.idToken = authResult.idToken;
     this.expiresAt = expiresAt;
 
-    // navigate to the home route
-    history.replace('/home');
+     // Set auth items in localStorage
+     localStorage.setItem('isLoggedIn', 'true');
+     localStorage.setItem('access_token', authResult.accessToken);
+     localStorage.setItem('id_token', authResult.idToken);
+     localStorage.setItem('expires_at', expiresAt);
+
+    const decoded = jwtDecode(localStorage.id_token && localStorage.id_token);
+    const user = {
+      email: decoded.email
+    };
+    
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.id_token}`
+      }
+    };
+
+    console.log(decoded)
+    axios.post('http://localhost:5000/auth/register', user, config)
+      .then(res => { 
+        console.log(res.data)
+       })
+      .catch(err => { 
+        console.log(err.response)
+       })
+
+      // navigate to the home route
+      history.replace('/home');
   }
 
   renewSession() {
