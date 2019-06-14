@@ -79,7 +79,7 @@ export default class Auth {
     };
 
     console.log(decoded)
-    axios.post('http://localhost:5000/auth/register', user, config)
+    axios.post('https://intelliflight-api.onrender.com/auth/register', user, config)
       .then(res => { 
         console.log(res.data)
        })
