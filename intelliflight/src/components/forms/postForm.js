@@ -11,8 +11,8 @@ export default class PostForm extends Component {
       icing: null,
       weather: null,
       description: null,
-      latitude: null,
-      longitude: null
+      latitude: "",
+      longitude: ""
     };
   }
 
@@ -32,8 +32,8 @@ export default class PostForm extends Component {
       icing: null,
       weather: null,
       description: null,
-      latitude: null,
-      longitude: null
+      latitude: "",
+      longitude: ""
     });
   };
 
@@ -336,7 +336,7 @@ export default class PostForm extends Component {
           </div>
           <div className="latitude">
             <input
-              value={this.state.latitude}
+              value={this.state.latitude.toString()}
               onChange={this.handleChange}
               name="latitude"
               placeholder="latitude"
@@ -344,7 +344,7 @@ export default class PostForm extends Component {
           </div>
           <div className="longitude">
             <input
-              value={this.state.longitude}
+              value={this.state.longitude.toString()}
               onChange={this.handleChange}
               name="longitude"
               placeholder="longitude"
