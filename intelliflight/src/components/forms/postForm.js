@@ -17,6 +17,7 @@ export default class PostForm extends Component {
   }
 
   addPirep = e => {
+    e.preventDefault();
     axios
       .post("https://intelliflight-api.onrender.com/api/pireps/", this.state)
       .then(res => {
@@ -37,15 +38,16 @@ export default class PostForm extends Component {
   };
 
   handleChange = e => {
+    // e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
   render() {
-    console.log("turbulence:", this.state.turbulence );
-    console.log( "icing:", this.state.icing );
-    console.log("weather:", this.state.weather );
+    console.log("turbulence:", this.state.turbulence);
+    console.log("icing:", this.state.icing);
+    console.log("weather:", this.state.weather);
 
     return (
       <div>
@@ -323,7 +325,6 @@ export default class PostForm extends Component {
               placeholder="weather"
             />
             <img src={WeatherIcon(11)} alt="" />
-
           </div>
           <div className="description">
             <input
