@@ -11,12 +11,13 @@ export default class PostForm extends Component {
       icing: null,
       weather: null,
       description: null,
-      latitude: null,
-      longitude: null
+      latitude: "",
+      longitude: ""
     };
   }
 
   addPirep = e => {
+    e.preventDefault();
     axios
       .post("https://intelliflight-api.onrender.com/api/pireps/", this.state)
       .then(res => {
@@ -31,21 +32,22 @@ export default class PostForm extends Component {
       icing: null,
       weather: null,
       description: null,
-      latitude: null,
-      longitude: null
+      latitude: "",
+      longitude: ""
     });
   };
 
   handleChange = e => {
+    // e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
   render() {
-    console.log("turbulence:", this.state.turbulence );
-    console.log( "icing:", this.state.icing );
-    console.log("weather:", this.state.weather );
+    console.log("turbulence:", this.state.turbulence);
+    console.log("icing:", this.state.icing);
+    console.log("weather:", this.state.weather);
 
     return (
       <div>
@@ -323,7 +325,6 @@ export default class PostForm extends Component {
               placeholder="weather"
             />
             <img src={WeatherIcon(11)} alt="" />
-
           </div>
           <div className="description">
             <input
@@ -335,7 +336,7 @@ export default class PostForm extends Component {
           </div>
           <div className="latitude">
             <input
-              value={this.state.latitude}
+              value={this.state.latitude.toString()}
               onChange={this.handleChange}
               name="latitude"
               placeholder="latitude"
@@ -343,7 +344,7 @@ export default class PostForm extends Component {
           </div>
           <div className="longitude">
             <input
-              value={this.state.longitude}
+              value={this.state.longitude.toString()}
               onChange={this.handleChange}
               name="longitude"
               placeholder="longitude"
