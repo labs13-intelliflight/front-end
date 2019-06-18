@@ -58,7 +58,7 @@ class PirepMap extends React.Component {
       selectedPirep: pirep
     });
   };
-
+// functions for flight markers
   StartMarker = () => {
     if (this.state.start.coordinates) {
       return (
@@ -103,7 +103,6 @@ class PirepMap extends React.Component {
   };
 
   // Creates Google map
-
   Map = () => {
     return (
       <div>
@@ -135,12 +134,6 @@ class PirepMap extends React.Component {
                 background: "white",
                 margin: "10px"
               }}
-              // onClick={event => {
-              //   event.preventDefault();
-              //   this.setState({
-              //     selectedPirep : pirep
-              //   })
-              // }}
               onClick={event => {
                 this.onClickMarker(event, pirep);
                 console.log(pirep);
@@ -164,7 +157,7 @@ class PirepMap extends React.Component {
               ]}
               geodesic={true}
               options={{
-                strokeColor: "#ff2527",
+                strokeColor: "#3F51B5",
                 strokeOpacity: 0.75,
                 strokeWeight: 5
               }}
