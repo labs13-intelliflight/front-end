@@ -109,3 +109,42 @@ body {
 .example {
   display: none;
 }
+
+.pirep{
+  position: absolute;
+  left:10px;
+  top: 100px;
+}
+
+.postform{
+  margin:auto;
+  font-size: 18px;
+}
+
+.pirep-report {
+  font-size: 18px;
+}
+
+.flightDiv {
+  position: absolute;
+  left:10px;
+  top: 200px;
+  background: #3F51B5;
+  border-radius: 10px;
+  text-align: center;
+  padding:10px;
+}
+
+.custom-style{
+  /* background:black */
+  border-radius: 10px;
+}
+
+.custom-style-list{
+background:white;
+}
+
+.plan-label{
+font-weight:bold;
+color:white
+}
