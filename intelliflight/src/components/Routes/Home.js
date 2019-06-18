@@ -9,13 +9,15 @@ class Home extends Component {
     const { isAuthenticated } = this.props.auth;
     return (
       <div >
+         
         {isAuthenticated() && (
           <div>
             <h4>You are logged in!</h4>
-            <div>Intelliflight map</div>
-            <PirepMap />
+            {/* <div>Intelliflight map</div> */}
+           <PirepMap />
           </div>
         )}
+       
         {!isAuthenticated() && (
           <h4>
             You are not logged in! Please{" "}

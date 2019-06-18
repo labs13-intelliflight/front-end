@@ -16,7 +16,7 @@ import IcingIcon from "./functions/icing.js";
 import TurbIcon from "./functions/turbulence.js";
 import distance from "./functions/distance-calculator";
 
-import PostForm from "../forms/postForm.js";
+import FormDialog from "../materialUI/formdialog";
 
 // Set global variables for start and destination
 
@@ -27,9 +27,9 @@ let destination;
 class PirepMap extends React.Component {
   state = {
     pirepData: [],
-    start: null,
-    destination: null,
-    selectedPirep: null
+    start: "",
+    destination: "",
+    selectedPirep: ""
   };
 
   componentDidMount() {
@@ -57,6 +57,49 @@ class PirepMap extends React.Component {
     this.setState({
       selectedPirep: pirep
     });
+  };
+
+  StartMarker = () => {
+    if (this.state.start.coordinates) {
+      return (
+        <Marker
+          position={{
+            lat: this.state.start.coordinates.lat,
+            lng: this.state.start.coordinates.lng
+          }}
+          label={{
+            float: "left",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "18px",
+            text: "A"
+          }}
+        />
+      );
+    } else {
+      return "";
+    }
+  };
+  DestinationMarker = () => {
+    if (this.state.destination) {
+      return (
+        <Marker
+          position={{
+            lat: this.state.destination.coordinates.lat,
+            lng: this.state.destination.coordinates.lng
+          }}
+          label={{
+            float: "left",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "18px",
+            text: "B"
+          }}
+        />
+      );
+    } else {
+      return "";
+    }
   };
 
   // Creates Google map
@@ -98,13 +141,15 @@ class PirepMap extends React.Component {
               //     selectedPirep : pirep
               //   })
               // }}
-              onClick={(event) => {
+              onClick={event => {
                 this.onClickMarker(event, pirep);
                 console.log(pirep);
               }}
             />
           ))}
 
+          {this.StartMarker()}
+          {this.DestinationMarker()}
           {this.state.start && this.state.destination && (
             <Polyline
               path={[
@@ -140,7 +185,14 @@ class PirepMap extends React.Component {
                 <p>Turbulence: {this.state.selectedPirep.turbulence}</p>
                 <p>Icing: {this.state.selectedPirep.icing}</p>
                 <p>Description: {this.state.selectedPirep.description}</p>
-                <p>Weather:<img alt="" src={WeatherIcon(this.state.selectedPirep.weather)}/></p>
+                
+                <p>
+                  Weather:
+                  <img
+                    alt=""
+                    src={WeatherIcon(this.state.selectedPirep.weather)}
+                  />
+                </p><p> Created At: {this.state.selectedPirep.created_at}</p>
               </div>
             </InfoWindow>
           )}
@@ -155,7 +207,7 @@ class PirepMap extends React.Component {
     const MapWrapped = withScriptjs(withGoogleMap(this.Map));
 
     return (
-      <div style={{ width: "100vw", height: "90vh" }}>
+      <div style={{ width: "100vw", height: "100vh" }}>
         <MapWrapped
           googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
             process.env.REACT_APP_GOOGLE_KEY
@@ -170,17 +222,19 @@ class PirepMap extends React.Component {
 
   // distance function if else
 
-  calulatedDistance = () => {
+  calculatedDistance = () => {
     if (this.state.start && this.state.destination) {
       return (
         <div>
           <h1>Total Miles:</h1>
-          {distance(
-            this.state.start.coordinates.lat,
-            this.state.start.coordinates.lng,
-            this.state.destination.coordinates.lat,
-            this.state.destination.coordinates.lng,
-            "N"
+          {Math.ceil(
+            distance(
+              this.state.start.coordinates.lat,
+              this.state.start.coordinates.lng,
+              this.state.destination.coordinates.lat,
+              this.state.destination.coordinates.lng,
+              "N"
+            )
           )}
         </div>
       );
@@ -192,12 +246,15 @@ class PirepMap extends React.Component {
   render() {
     return (
       <div>
+        {" "}
+        {/* Renders Google Map */}
+        {this.TestMap()}
         <div className="top-content">
-          <div className="plan-distance">
+          <div className="plan-distance flightDiv">
             {/* Flight plan submission form */}
-            <h4>Plan Your Flight</h4>
+            {/* <h4>Plan Your Flight</h4> */}
             <form onSubmit={this.submitFlightPlan}>
-              <p>Starting Point</p>
+              <p className="plan-label">Starting Point</p>
               <GoogleComponent
                 apiKey={process.env.REACT_APP_GOOGLE_KEY}
                 language={"en"}
@@ -208,7 +265,7 @@ class PirepMap extends React.Component {
                   start = event;
                 }}
               />
-              <p>Destination</p>
+              <p className="plan-label">Destination</p>
               <GoogleComponent
                 apiKey={process.env.REACT_APP_GOOGLE_KEY}
                 language={"en"}
@@ -224,14 +281,12 @@ class PirepMap extends React.Component {
 
             {/* will display distance */}
 
-            {this.calulatedDistance()}
-          </div>
-          <div className="postform">
-            <PostForm />
+            {this.calculatedDistance()}
           </div>
         </div>
-        {/* Renders Google Map */}
-        {this.TestMap()}
+        <div className="pirep">
+          <FormDialog />
+        </div>
       </div>
     );
   }

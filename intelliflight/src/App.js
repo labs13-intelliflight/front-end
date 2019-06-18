@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
-import './App.css';
-import intelliflightLogoWhite from '../src/images/intelliflight-logo v1.png'
-// import PirepMap from './components/map/map.js'
-
+import React, { Component } from "react";
+import { Navbar, Button } from "react-bootstrap";
+import "./App.css";
+import intelliflightLogoWhite from "../src/images/intelliflight-logo v1.png";
+// import PirepMap from "./components/map/map.js";
 
 class App extends Component {
   goTo(route) {
-    this.props.history.replace(`/${route}`)
+    this.props.history.replace(`/${route}`);
   }
 
   login() {
@@ -21,7 +20,7 @@ class App extends Component {
   componentDidMount() {
     const { renewSession } = this.props.auth;
 
-    if (localStorage.getItem('isLoggedIn') === 'true') {
+    if (localStorage.getItem("isLoggedIn") === "true") {
       renewSession();
     }
   }
@@ -30,8 +29,9 @@ class App extends Component {
     const { isAuthenticated } = this.props.auth;
 
     return (
-      <div className="page-border">
-        <Navbar className="nav-bar">
+      <div>
+        <div className="page-border">
+          <Navbar className="nav-bar">
           <div>
             <Navbar.Brand className="top-logo">
               <img src={intelliflightLogoWhite} className="white-wings" alt=""/>
@@ -71,10 +71,11 @@ class App extends Component {
             }
           </div>
         </Navbar>
+        </div>
         <div className="example">
           <h1>Intelliflight</h1>
         </div>
-        {/* <PirepMap/> */}
+        {/* <PirepMap /> */}
       </div>
     );
   }
