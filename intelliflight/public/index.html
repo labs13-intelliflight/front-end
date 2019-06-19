@@ -1,102 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Bubl</title>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/index.css">
-<link rel="stylesheet" href="css/loader.css">
-<link rel="stylesheet" href="css/transition.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
-</style>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-<div id="pageloader">
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
 
-    <div class="spinner">
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
-    </div>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
-</div>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-<!-- Header -->
-<header class="main-head">
-  <div class="nav-container">
-    <div class="nav-text-left">
-      <a id="buttons" href="/about.html"><h4 class="about">ABOUT</h4></a>
-    </div>
-    <div class="nav-text-right">
-      <a id="buttons" href="https://bublsocial.netlify.com/"><h4 class="login">LOGIN</h4></a>
-    </div>
-  </div>
-  <div class="header-container1">
-    <img id="buttons" class="banner" src="assests/Bubl-logo@2x.png">
-  </div>
-  <div class="header-container2">
-    <h1 class="header-title">INTRODUCING BUBL<br></h1>
-    <h2 class="header-text">Find new friends at school.</h2>
-    <h3 class="header-sub">A great new way to connect with other students, made completely for you and your school.</h3>
-    <button class="button" onclick="location.href='https://bublsocial.netlify.com/'">get started</button>
-  </div>
-</header>
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-<!-- First Grid -->
-<div class="section2 w3-row-padding w3-padding-64 w3-container">
-  <div class="w3-content">
-    <div class="w3-twothird">
-      <h1>New at your school?<br><span class ="subgreen1">Don't worry! Try Bubl.</span></h1>
-      <h4 class="w3-padding-32">We'll help you connect with new friends in no-time.<br>
-      <span class="subgreen2">100% safe, and no cyber-bullying ever allowed!</span></h4>
-
-      <p class="w3-text-grey">Bubl is a brand new app designed by top engineers to make socializing between you and your classmates fun and hassle-free. 
-        Try it out! Search for anything that interests you. Bubl will match you with others who share similar interests. Just click the button at the top, and we'll get you started!
-      </p>
-    </div>
-
-    <div class="w3-third w3-center">
-      <img src="/assests/bubl-phone-app.gif" width="75%" height="75%">
-    </div>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
-  <div class="w3-xlarge w3-padding-32">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
- </div>
- <a>Made by <a id="buttons" href="/about.html" class="underline">Team Bubl</a></p>
-</footer>
-
-<script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
-<script src="/js/transition.js"></script>
-</body>
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
 </html>
