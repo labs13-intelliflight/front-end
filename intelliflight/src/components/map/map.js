@@ -22,6 +22,7 @@ import FormDialog from "../materialUI/formdialog";
 
 let start;
 let destination;
+let hourWindow;
 // let selectedPirep;
 
 class PirepMap extends React.Component {
@@ -29,7 +30,8 @@ class PirepMap extends React.Component {
     pirepData: [],
     start: "",
     destination: "",
-    selectedPirep: ""
+    selectedPirep: "",
+    hourWindow: 2
   };
 
   componentDidMount() {
@@ -50,6 +52,12 @@ class PirepMap extends React.Component {
       start: start,
       destination: destination
     });
+  };
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   };
 
   onClickMarker = (event, pirep) => {
@@ -111,35 +119,44 @@ class PirepMap extends React.Component {
           defaultCenter={{ lat: 40.7306, lng: -73.9352 }}
           defaultOptions={{ styles: mapStyles }}
         >
-          {this.state.pirepData.map(pirep => (
-            <Marker
-              key={pirep.id}
-              position={{
-                lat: pirep.latitude,
-                lng: pirep.longitude
-              }}
-              icon={{
-                url:
-                  TurbIcon(pirep.turbulence) ||
-                  IcingIcon(pirep.icing) ||
-                  WeatherIcon(pirep.weather),
-                scaledSize: new window.google.maps.Size(30, 40)
-              }}
-              label={{
-                float: "left",
-                color: "black",
-                fontWeight: "bold",
-                fontSize: "12px",
-                text: pirep.altitude,
-                background: "white",
-                margin: "10px"
-              }}
-              onClick={event => {
-                this.onClickMarker(event, pirep);
-                console.log(pirep);
-              }}
-            />
-          ))}
+          {this.state.pirepData.map(pirep => {
+
+            let date = new Date();
+            date.setHours(date.getHours() - this.state.hourWindow);
+
+            return pirep.created_at >= date.toISOString() ? (
+              <Marker
+                key={pirep.id}
+                position={{
+                  lat: pirep.latitude,
+                  lng: pirep.longitude
+                }}
+                icon={{
+                  url:
+                    TurbIcon(pirep.turbulence) ||
+                    IcingIcon(pirep.icing) ||
+                    WeatherIcon(pirep.weather),
+                  scaledSize: new window.google.maps.Size(30, 40)
+                }}
+                label={{
+                  float: "left",
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: "12px",
+                  text: pirep.altitude,
+                  background: "white",
+                  margin: "10px"
+                }}
+                onClick={event => {
+                  this.onClickMarker(event, pirep);
+                  console.log(pirep);
+                }}
+              />
+              ) : (
+                console.log(false)
+              )
+            })
+          }
 
           {this.StartMarker()}
           {this.DestinationMarker()}
@@ -237,11 +254,23 @@ class PirepMap extends React.Component {
   };
 
   render() {
+    console.log(this.state.hourWindow)
     return (
       <div>
         {" "}
         {/* Renders Google Map */}
         {this.TestMap()}
+
+        {/* Testing Hour Window input form */}
+        <form className="hourForm">
+          <input
+            className="hourInput"
+            name="hourWindow"
+            value={this.state.hourWindow}
+            placeholder="Hour Window"
+            onChange={this.handleChange}
+          />
+        </form>
         <div className="top-content">
           <div className="plan-distance flightDiv">
             {/* Flight plan submission form */}
