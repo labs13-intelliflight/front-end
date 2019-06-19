@@ -1,0 +1,10 @@
+#pageloader.dimissloader{
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s, visibility 0s 1s;
+}
+
+body.fadeout{
+  opacity: 0;
+  transition: all 1.0s;
+}
