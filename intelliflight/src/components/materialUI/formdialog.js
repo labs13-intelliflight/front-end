@@ -7,7 +7,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-
 import Postform from "../forms/postForm"
 
 export default function FormDialog() {
@@ -23,25 +22,17 @@ export default function FormDialog() {
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button variant="contained" color="primary" className="btn-color" onClick={handleClickOpen}>
         Pirep Entry
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">SUBMIT NEW PIREP</DialogTitle>
-        <DialogContent>
+        <DialogTitle id="form-dialog-title" className="dialog-title orange">SUBMIT NEW PIREP</DialogTitle>
+        <DialogContent className="orange pirep-form">
         <div className="postform">
            <Postform />
         </div>
 
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Submit
-          </Button>
-        </DialogActions>
       </Dialog>
     </div>
   );

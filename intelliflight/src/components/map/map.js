@@ -266,7 +266,7 @@ class PirepMap extends React.Component {
         {/* Testing Hour Window input form */}
         <form className="hourForm">
           <input
-            className="hourInput"
+            className="custom-style"
             name="hourWindow"
             value={this.state.hourWindow}
             placeholder="Hour Window"
