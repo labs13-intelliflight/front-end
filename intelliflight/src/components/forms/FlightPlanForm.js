@@ -5,8 +5,7 @@ class FlightPlanForm extends React.Component {
     
     render() {
         return (
-            <div className="top-content">
-                <h4>Plan Your Flight</h4>
+            <div className="top-content plan-flight">
                 <form onSubmit={this.props.submitFlightPlan}>
                     <p>Starting Point</p>
                     <GoogleComponent

@@ -17,7 +17,7 @@ import TurbIcon from "./functions/turbulence.js";
 import distance from "./functions/distance-calculator";
 
 import FormDialog from "../materialUI/formdialog";
-import FlightPlanForm from "../FlightPlanForm";
+import FlightPlanFormDialog from "../materialUI/flightplanFormDialog";
 
 // Set global variables for start and destination
 
@@ -265,6 +265,7 @@ class PirepMap extends React.Component {
 
         {/* Testing Hour Window input form */}
         <form className="hourForm">
+          <p>PIREP History (hours)</p>
           <input
             className="custom-style"
             name="hourWindow"
@@ -279,16 +280,15 @@ class PirepMap extends React.Component {
 
             {/* Flight plan submission form */}
 
-            <FlightPlanForm
+            <FlightPlanFormDialog
                submitFlightPlan={this.submitFlightPlan}
             />
 
             {/* will display distance */}
 
-            {this.calculatedDistance()}
+            <p>{this.calculatedDistance()}</p>
           </div>
        
-        
         <div className="pirep">
           <FormDialog />
         </div>

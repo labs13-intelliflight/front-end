@@ -126,15 +126,6 @@ body {
   font-size: 18px;
 }
 
-.flightDiv {
-  position: absolute;
-  left:10px;
-  top: 200px;
-  background: #FAA632;
-  text-align: center;
-  padding:10px;
-}
-
 .custom-style{
   border: none;
 }
@@ -146,6 +137,31 @@ body {
 .plan-label{
 font-weight:bold;
 color:white
+}
+
+/* Distance Display */
+
+.flightDiv {
+  color: white;
+  position: absolute;
+  top: 200px;
+  /* background: #FAA632; */
+  text-align: center;
+  padding:10px;
+}
+
+.flightDiv p {
+  margin-top: 10px;
+}
+
+/* Plan a Route Form */
+
+.plan-flight p {
+  margin-bottom: 10px;
+}
+
+.plan-flight input {
+  background: white;
 }
 
 /* Update Hour Window Form */
@@ -161,6 +177,10 @@ color:white
   background: #FAA632;
   text-align: center;
   padding:10px;
+}
+
+.hourForm p {
+  margin-bottom: 10px;
 }
 
 /* PIREP entry form */
