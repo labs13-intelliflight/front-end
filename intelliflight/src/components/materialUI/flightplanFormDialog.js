@@ -7,9 +7,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import Postform from "../forms/postForm"
+import FlightPlanForm from "../forms/FlightPlanForm";
 
-export default function FormDialog() {
+export default function FlightPlanFormDialog(props) {
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen() {
@@ -23,15 +23,16 @@ export default function FormDialog() {
   return (
     <div>
       <Button variant="contained" color="primary" className="btn-color" onClick={handleClickOpen}>
-        Pirep Entry
+        Plan Flight
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title" className="dialog-title orange">SUBMIT NEW PIREP</DialogTitle>
+        <DialogTitle id="form-dialog-title" className="dialog-title orange">PLAN A ROUTE</DialogTitle>
         <DialogContent className="orange pirep-form">
         <div className="postform">
-           <Postform />
+           <FlightPlanForm 
+                submitFlightPlan={props.submitFlightPlan}
+           />
         </div>
-
         </DialogContent>
       </Dialog>
     </div>

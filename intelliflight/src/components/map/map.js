@@ -17,13 +17,14 @@ import TurbIcon from "./functions/turbulence.js";
 import distance from "./functions/distance-calculator";
 
 import FormDialog from "../materialUI/formdialog";
+import FlightPlanFormDialog from "../materialUI/flightplanFormDialog";
 
 // Set global variables for start and destination
 
-let start;
-let destination;
-let hourWindow;
-// let selectedPirep;
+// let start;
+// let destination;
+// let hourWindow;
+// // let selectedPirep;
 
 class PirepMap extends React.Component {
   state = {
@@ -49,10 +50,10 @@ class PirepMap extends React.Component {
   submitFlightPlan = event => {
     event.preventDefault();
     this.setState({
-      start: start,
-      destination: destination
-    });
-  };
+      start: JSON.parse(localStorage.getItem('start')),
+      destination: JSON.parse(localStorage.getItem('destination'))
+    })
+  }
 
   handleChange = e => {
     this.setState({
@@ -111,6 +112,7 @@ class PirepMap extends React.Component {
   };
 
   // Creates Google map
+
   Map = () => {
     return (
       <div>
@@ -263,49 +265,30 @@ class PirepMap extends React.Component {
 
         {/* Testing Hour Window input form */}
         <form className="hourForm">
+          <p>PIREP History (hours)</p>
           <input
-            className="hourInput"
+            className="custom-style"
             name="hourWindow"
             value={this.state.hourWindow}
             placeholder="Hour Window"
             onChange={this.handleChange}
           />
         </form>
-        <div className="top-content">
+
+        
           <div className="plan-distance flightDiv">
+
             {/* Flight plan submission form */}
-            {/* <h4>Plan Your Flight</h4> */}
-            <form onSubmit={this.submitFlightPlan}>
-              <p className="plan-label">Starting Point</p>
-              <GoogleComponent
-                apiKey={process.env.REACT_APP_GOOGLE_KEY}
-                language={"en"}
-                coordinates={true}
-                locationBoxStyle={"custom-style"}
-                locationListStyle={"custom-style-list"}
-                onChange={event => {
-                  start = event;
-                }}
-              />
-              <p className="plan-label">Destination</p>
-              <GoogleComponent
-                apiKey={process.env.REACT_APP_GOOGLE_KEY}
-                language={"en"}
-                coordinates={true}
-                locationBoxStyle={"custom-style"}
-                locationListStyle={"custom-style-list"}
-                onChange={event => {
-                  destination = event;
-                }}
-              />
-              <button>Submit</button>
-            </form>
+
+            <FlightPlanFormDialog
+               submitFlightPlan={this.submitFlightPlan}
+            />
 
             {/* will display distance */}
 
-            {this.calculatedDistance()}
+            <p>{this.calculatedDistance()}</p>
           </div>
-        </div>
+       
         <div className="pirep">
           <FormDialog />
         </div>
