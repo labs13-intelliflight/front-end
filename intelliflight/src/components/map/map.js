@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState}  from "react";
 import {
   GoogleMap,
   withScriptjs,
@@ -31,7 +31,6 @@ class PirepMap extends React.Component {
     pirepData: [],
     start: "",
     destination: "",
-    selectedPirep: "",
     hourWindow: 2
   };
 
@@ -61,12 +60,6 @@ class PirepMap extends React.Component {
     })
   };
 
-  onClickMarker = (event, pirep) => {
-    // event.preventDefault();
-    this.setState({
-      selectedPirep: pirep
-    });
-  };
 // functions for flight markers
   StartMarker = () => {
     if (this.state.start.coordinates) {
@@ -114,6 +107,9 @@ class PirepMap extends React.Component {
   // Creates Google map
 
   Map = () => {
+    // adding hooks
+    const [selectedPirep, setSelectedPirep] = useState(null);
+
     return (
       <div>
         <GoogleMap
@@ -149,9 +145,8 @@ class PirepMap extends React.Component {
                   background: "white",
                   margin: "10px"
                 }}
-                onClick={event => {
-                  this.onClickMarker(event, pirep);
-                  console.log(pirep);
+                onClick={() => {
+                  setSelectedPirep(pirep)
                 }}
               />
               ) : (
@@ -182,32 +177,37 @@ class PirepMap extends React.Component {
               }}
             />
           )}
-          {this.state.selectedPirep && (
+
+          {selectedPirep && (
             <InfoWindow
               position={{
-                lat: this.state.selectedPirep.latitude,
-                lng: this.state.selectedPirep.longitude
+                lat: selectedPirep.latitude,
+                lng: selectedPirep.longitude
+              }}
+              onCloseClick={() => {
+                setSelectedPirep(null)
               }}
             >
               <div>
                 <p>Report</p>
-                <p>Altitude: {this.state.selectedPirep.altitude}00 feet</p>
-                <p>Latitude: {this.state.selectedPirep.latitude}</p>
-                <p>Longitude: {this.state.selectedPirep.longitude} </p>
-                <p>Turbulence: {this.state.selectedPirep.turbulence}</p>
-                <p>Icing: {this.state.selectedPirep.icing}</p>
-                <p>Description: {this.state.selectedPirep.description}</p>
+                <p>Altitude: {selectedPirep.altitude}00 feet</p>
+                <p>Latitude: {selectedPirep.latitude}</p>
+                <p>Longitude: {selectedPirep.longitude} </p>
+                <p>Turbulence: {selectedPirep.turbulence}</p>
+                <p>Icing: {selectedPirep.icing}</p>
+                <p>Description: {selectedPirep.description}</p>
                 
                 <p>
                   Weather:
                   <img
                     alt=""
-                    src={WeatherIcon(this.state.selectedPirep.weather)}
+                    src={WeatherIcon(selectedPirep.weather)}
                   />
-                </p><p> Created At: {this.state.selectedPirep.created_at}</p>
+                </p><p> Created At: {selectedPirep.created_at}</p>
               </div>
             </InfoWindow>
           )}
+
         </GoogleMap>
       </div>
     );
