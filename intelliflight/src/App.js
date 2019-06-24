@@ -69,7 +69,7 @@ class App extends Component {
         </div>
       )}
       <div className="example">
-          <h1>Intelliflight</h1>
+          {/* <h1>Intelliflight</h1> */}
       </div>
         {/* <PirepMap /> */}
       </div>

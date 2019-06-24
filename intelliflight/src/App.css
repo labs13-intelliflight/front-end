@@ -245,15 +245,23 @@ color:white
 }
 
 .weather img {
-  width: 45px;
+  width: 30px;
 }
 
 .weather-flex {
   display: flex;
   justify-content: space-around;
-  background:  #f8f8ff;
+  /* background:  #f8f8ff; */
   padding-top: 15px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
+  border-bottom:1px solid black
+}
+
+.weather-background {
+   background:  #f8f8ff;
+   border-radius: 20px;
+   padding:5px 5px 0px 0px;
+   margin:5px;
 }
 
 .weather-column {

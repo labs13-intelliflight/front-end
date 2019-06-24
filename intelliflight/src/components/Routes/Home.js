@@ -12,8 +12,6 @@ class Home extends Component {
          
         {isAuthenticated() && (
           <div>
-            <h4>You are logged in!</h4>
-            {/* <div>Intelliflight map</div> */}
            <PirepMap />
           </div>
         )}
