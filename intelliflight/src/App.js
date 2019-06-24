@@ -23,6 +23,7 @@ class App extends Component {
     return (
       <div>
         {!localStorage.getItem("isLoggedIn") && (
+          <div className="container"> 
           <div className="page-border">
           <Navbar className="nav-bar">
           <div>
@@ -64,6 +65,7 @@ class App extends Component {
             }
           </div>
         </Navbar>
+        </div>
         </div>
       )}
       <div className="example">
