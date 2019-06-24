@@ -18,6 +18,7 @@ import distance from "./functions/distance-calculator";
 
 import FormDialog from "../materialUI/formdialog";
 import FlightPlanFormDialog from "../materialUI/flightplanFormDialog";
+import PIREPHistoryInput from "../forms/PIREPHistoryInput";
 
 // Set global variables for start and destination
 
@@ -54,11 +55,11 @@ class PirepMap extends React.Component {
     })
   }
 
-  handleChange = e => {
+  updateHourWindow = hours => {
     this.setState({
-      [e.target.name]: e.target.value
+        hourWindow: hours
     })
-  };
+  }
 
 // functions for flight markers
   StartMarker = () => {
@@ -264,18 +265,12 @@ class PirepMap extends React.Component {
         {this.TestMap()}
 
         {/* Testing Hour Window input form */}
-        <form className="hourForm">
-          <p>PIREP History (hours)</p>
-          <input
-            className="custom-style"
-            name="hourWindow"
-            value={this.state.hourWindow}
-            placeholder="Hour Window"
-            onChange={this.handleChange}
-          />
-        </form>
-
         
+        <PIREPHistoryInput
+          handleChange={this.handleChange}
+          updateHourWindow={this.updateHourWindow}
+        />
+
           <div className="plan-distance flightDiv">
 
             {/* Flight plan submission form */}
