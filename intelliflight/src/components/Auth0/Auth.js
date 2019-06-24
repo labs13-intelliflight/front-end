@@ -3,6 +3,8 @@ import auth0 from 'auth0-js';
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 
+import getExpiresAtLocalStorage from './middleware';
+
 export default class Auth {
   accessToken;
   idToken;
@@ -26,7 +28,6 @@ export default class Auth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getIdToken = this.getIdToken.bind(this);
-    this.renewSession = this.renewSession.bind(this);
   }
 
   login() {
@@ -78,7 +79,6 @@ export default class Auth {
       }
     };
 
-    console.log(decoded)
     axios.post('https://intelliflight-api.onrender.com/auth/register', user, config)
       .then(res => { 
         console.log(res.data)
@@ -89,18 +89,6 @@ export default class Auth {
 
       // navigate to the home route
       history.replace('/home');
-  }
-
-  renewSession() {
-    this.auth0.checkSession({}, (err, authResult) => {
-       if (authResult && authResult.accessToken && authResult.idToken) {
-         this.setSession(authResult);
-       } else if (err) {
-         this.logout();
-         console.log(err);
-         alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
-       }
-    });
   }
 
   logout() {
@@ -121,9 +109,14 @@ export default class Auth {
   }
 
   isAuthenticated() {
+    let expiresAt;
     // Check whether the current time is past the
     // access token's expiry time
-    let expiresAt = this.expiresAt;
+    if (getExpiresAtLocalStorage()) {
+      expiresAt = getExpiresAtLocalStorage();
+    } else {
+      expiresAt = this.expiresAt;
+    }
     return new Date().getTime() < expiresAt;
   }
 }

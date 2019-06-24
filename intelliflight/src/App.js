@@ -17,20 +17,13 @@ class App extends Component {
     this.props.auth.logout();
   }
 
-  componentDidMount() {
-    const { renewSession } = this.props.auth;
-
-    if (localStorage.getItem("isLoggedIn") === "true") {
-      renewSession();
-    }
-  }
-
   render() {
     const { isAuthenticated } = this.props.auth;
 
     return (
       <div>
-        <div className="page-border">
+        {!localStorage.getItem("isLoggedIn") && (
+          <div className="page-border">
           <Navbar className="nav-bar">
           <div>
             <Navbar.Brand className="top-logo">
@@ -72,9 +65,10 @@ class App extends Component {
           </div>
         </Navbar>
         </div>
-        <div className="example">
+      )}
+      <div className="example">
           <h1>Intelliflight</h1>
-        </div>
+      </div>
         {/* <PirepMap /> */}
       </div>
     );
