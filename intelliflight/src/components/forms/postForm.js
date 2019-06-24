@@ -272,7 +272,7 @@ export default class PostForm extends Component {
             <h1>Weather</h1>
             <div className="weather-flex">
               <div className="weather-column">
-                <div>
+                <div className="weather-background">
                   <input
                     id="weather1"
                     type="radio"
@@ -285,7 +285,7 @@ export default class PostForm extends Component {
                   <label htmlFor="weather1"><img src={WeatherIcon(1)} alt="" /></label>
                 </div>
 
-                <div>
+                <div className="weather-background">
                   <input
                     id="weather2"
                     type="radio"
@@ -298,7 +298,7 @@ export default class PostForm extends Component {
                   <label htmlFor="weather2"><img src={WeatherIcon(2)} alt="" /></label>
                 </div>
 
-                <div>
+                <div className="weather-background">
                   <input
                     id="weather3"
                     type="radio"
@@ -308,10 +308,10 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather3"><img src={WeatherIcon(1)} alt="" /></label>
+                  <label htmlFor="weather3"><img src={WeatherIcon(3)} alt="" /></label>
                 </div>
 
-                <div>
+                <div className="weather-background">
                   <input
                     id="weather4"
                     type="radio"
@@ -324,7 +324,7 @@ export default class PostForm extends Component {
                   <label htmlFor="weather4"><img src={WeatherIcon(4)} alt="" /></label>
                 </div>
 
-                <div>
+                <div className="weather-background">
                   <input
                     id="weather5"
                     type="radio"
@@ -337,7 +337,7 @@ export default class PostForm extends Component {
                   <label htmlFor="weather5"><img src={WeatherIcon(5)} alt="" /></label>
                 </div>
 
-                <div>
+                <div className="weather-background">
                   <input
                     id="weather6"
                     type="radio"
@@ -353,7 +353,7 @@ export default class PostForm extends Component {
               </div>
 
               <div className="weather-column">
-                <div>
+                <div className="weather-background">
                   <input
                     id="weather7"
                     type="radio"
@@ -366,7 +366,7 @@ export default class PostForm extends Component {
                   <label htmlFor="weather7"><img src={WeatherIcon(7)} alt="" /></label>
                 </div>
 
-                <div>
+                <div className="weather-background">
                   <input
                     id="weather8"
                     type="radio"
@@ -379,7 +379,7 @@ export default class PostForm extends Component {
                   <label htmlFor="weather8"><img src={WeatherIcon(8)} alt="" /></label>
                 </div>
 
-                <div>
+                <div className="weather-background">
                   <input
                     id="weather9"
                     type="radio"
@@ -392,7 +392,7 @@ export default class PostForm extends Component {
                   <label htmlFor="weather9"><img src={WeatherIcon(9)} alt="" /></label>
                 </div>
 
-                <div>
+                <div className="weather-background">
                   <input
                     id="weather10"
                     type="radio"
@@ -405,7 +405,7 @@ export default class PostForm extends Component {
                   <label htmlFor="weather10"><img src={WeatherIcon(10)} alt="" /></label>
                 </div>
 
-                <div>
+                <div className="weather-background">
                   <input
                     id="weather11"
                     type="radio"
