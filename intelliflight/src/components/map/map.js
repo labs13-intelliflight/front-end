@@ -7,7 +7,6 @@ import {
   Polyline,
   InfoWindow
 } from "react-google-maps";
-import { GoogleComponent } from "react-google-location";
 import mapStyles from "./mapStyles";
 import Axios from "axios";
 // functions import
