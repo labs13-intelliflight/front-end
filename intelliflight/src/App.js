@@ -4,6 +4,7 @@ import "./App.css";
 import intelliflightLogoWhite from "../src/images/intelliflight-logo v1.png";
 // import PirepMap from "./components/map/map.js";
 
+
 class App extends Component {
   goTo(route) {
     this.props.history.replace(`/${route}`);
@@ -16,6 +17,7 @@ class App extends Component {
   logout() {
     this.props.auth.logout();
   }
+
 
   render() {
     const { isAuthenticated } = this.props.auth;
@@ -71,7 +73,7 @@ class App extends Component {
       <div className="example">
           {/* <h1>Intelliflight</h1> */}
       </div>
-        {/* <PirepMap /> */}
+        {/* <PirepMap/> */}
       </div>
     );
   }

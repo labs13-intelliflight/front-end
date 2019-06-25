@@ -9,6 +9,8 @@ import {
 } from "react-google-maps";
 import mapStyles from "./mapStyles";
 import Axios from "axios";
+// importing moment for time formating
+import moment from "moment"
 // functions import
 import WeatherIcon from "./functions/weather-icon.js";
 import IcingIcon from "./functions/icing.js";
@@ -203,7 +205,7 @@ class PirepMap extends React.Component {
                     alt=""
                     src={WeatherIcon(selectedPirep.weather)}
                   />
-                </p><p> Created At: {selectedPirep.created_at}</p>
+                </p><p> Created At: {moment(selectedPirep.created_at).format('MMMM Do YYYY, h:mm:ss a')}</p>
               </div>
             </InfoWindow>
           )}
