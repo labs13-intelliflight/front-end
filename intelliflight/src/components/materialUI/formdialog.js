@@ -26,7 +26,9 @@ export default function FormDialog() {
         <DialogTitle id="form-dialog-title" className="dialog-title orange">SUBMIT NEW PIREP</DialogTitle>
         <DialogContent className="orange pirep-form">
         <div className="postform">
-           <Postform />
+           <Postform 
+           handleClose={handleClose}
+           />
         </div>
 
         </DialogContent>

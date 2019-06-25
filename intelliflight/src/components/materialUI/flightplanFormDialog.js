@@ -28,6 +28,7 @@ export default function FlightPlanFormDialog(props) {
         <div className="postform">
            <FlightPlanForm 
                 submitFlightPlan={props.submitFlightPlan}
+                handleClose={handleClose}
            />
         </div>
         </DialogContent>

@@ -28,7 +28,9 @@ class PirepHistoryInput extends React.Component {
                 placeholder="Hour Window"
                 onChange={this.handleChange}
             />
-            <button className="submit-btn-style">Update</button>
+            <button className="submit-btn-style"
+            onClick={this.props.handleClose}
+            >Update</button>
             </form>
         )
     }

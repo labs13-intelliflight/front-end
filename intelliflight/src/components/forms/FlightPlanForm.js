@@ -29,7 +29,9 @@ class FlightPlanForm extends React.Component {
                             localStorage.setItem('destination', JSON.stringify(event))
                         }}
                     />
-                    <button className="submit-btn-style">SUBMIT</button>
+                    <button className="submit-btn-style"
+                    onClick={this.props.handleClose}
+                    >SUBMIT</button>
                 </form>
             </div>
         )
