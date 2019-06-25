@@ -23,15 +23,15 @@ export default function FlightPlanFormDialog(props) {
         Plan Flight
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title" className="dialog-title orange">PLAN A ROUTE</DialogTitle>
-        <DialogContent className="orange pirep-form">
-        <div className="postform">
-           <FlightPlanForm 
-                submitFlightPlan={props.submitFlightPlan}
-                handleClose={handleClose}
-           />
+        <div className="plan-flight-container">
+          <DialogTitle id="form-dialog-title" className="dialog-title orange">PLAN A ROUTE</DialogTitle>
+          <DialogContent className="orange post-form">
+            <FlightPlanForm 
+              submitFlightPlan={props.submitFlightPlan}
+              handleClose={handleClose}
+            />
+          </DialogContent>
         </div>
-        </DialogContent>
       </Dialog>
     </div>
   );

@@ -70,6 +70,23 @@ body {
   margin: auto ;
 }
 
+/* Other Global Styles */
+
+.submit-btn-style {
+  background: #1B72AB;
+  color: white;
+  height: 35px;
+  width: 120px;
+  border: none;
+  border-radius: 5px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.orange {
+  background: #FAA632;
+}
+
 .nav-bar{
   
   display:flex;
@@ -79,7 +96,6 @@ body {
   height: 300px;
   width:60%;
 }
-
 
 .top-logo {
   display:flex;
@@ -134,17 +150,16 @@ body {
   font-size: 18px;
 }
 
-.custom-style{
+/* hour window input */
+
+.custom-style {
   border: none;
+  background: white;
 }
 
-.custom-style-list{
-  background:white;
-}
-
-.plan-label{
-font-weight:bold;
-color:white
+.plan-label {
+  font-weight:bold;
+  color:white
 }
 
 /* Distance Display */
@@ -162,14 +177,40 @@ color:white
   margin-top: 10px;
 }
 
-/* Plan a Route Form */
+/* Flight Plan Styles */
+
+.plan-flight-container {
+  max-width: 448px;
+  text-align: center;
+}
+
+.custom-style-location {
+  width: 400px;
+  margin-bottom: 1rem;
+  border: none;
+}
+
+.custom-style-list {
+  background: white;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+li.custom-style-list:hover {
+  background: #1B72AB;
+  cursor: pointer;
+}
 
 .plan-flight p {
   margin-bottom: 10px;
 }
 
-.plan-flight input {
-  background: white;
+/* Flight Plan Media Queries */
+
+@media (max-width: 600px) {
+  .custom-style-location {
+    width: 100%;
+  }
 }
 
 /* Update Hour Window Form */
@@ -225,7 +266,8 @@ color:white
 .pirep-form .form-column h1 {
   text-align: center;
   width: 100%;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
 }
 
 .pirep-form input {
@@ -238,10 +280,36 @@ color:white
   margin-right: 0.5rem;
 }
 
+/* Form Column Media Queries */
+
+@media (max-width: 500px) {
+  .pirep-form .form-flex {
+    flex-direction: column;
+  }
+
+  .pirep-form .form-column {
+    width: 100%;
+  }
+
+  .pirep-form .icing {
+    border-top: 1px solid black;
+    border-left: none;
+  }
+
+  .altitude-label {
+    margin-bottom: 1rem;
+  }
+
+  .altitude input {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
 /* weather icons */
 
 .weather h1 {
-  margin: 1rem 0 2rem 0;
+  margin-top: 1rem;
 }
 
 .weather img {
@@ -252,7 +320,7 @@ color:white
   display: flex;
   justify-content: space-around;
   /* background:  #f8f8ff; */
-  padding-top: 15px;
+  padding: 15px 0 15px 0;
   /* border-radius: 5px; */
   border-bottom:1px solid black
 }
@@ -287,6 +355,8 @@ color:white
   justify-content: space-between;
 }
 
+/* description, lat, long Form Media Queries */
+
 @media(max-width: 500px) {
   .description, .latitude, .longitude {
     flex-direction: column;
@@ -295,23 +365,4 @@ color:white
   .bottom-form-inputs label {
     margin-bottom: 10px;
   }
-}
-
-.btn-color {
-  background: #1B72AB;
-}
-
-.submit-btn-style {
-  background: #1B72AB;
-  color: white;
-  height: 35px;
-  width: 120px;
-  border: none;
-  border-radius: 5px;
-  margin: 1rem 0;
-  font-size: 0.9rem;
-}
-
-.orange {
-  background: #FAA632;
 }
