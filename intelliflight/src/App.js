@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Navbar, Button } from "react-bootstrap";
 import "./App.css";
 import intelliflightLogoWhite from "../src/images/intelliflight-logo v1.png";
-// import PirepMap from "./components/map/map.js";
+// import PirepMap from "./8*components/map/map.js";
 
 class App extends Component {
   goTo(route) {
