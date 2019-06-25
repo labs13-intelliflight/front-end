@@ -6,7 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 import Postform from "../forms/postForm"
 
-export default function FormDialog() {
+export default function FormDialog(props) {
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen() {
@@ -26,9 +26,10 @@ export default function FormDialog() {
         <DialogTitle id="form-dialog-title" className="dialog-title orange">SUBMIT NEW PIREP</DialogTitle>
         <DialogContent className="orange pirep-form">
         <div className="postform">
-           <Postform 
-           handleClose={handleClose}
-           />
+          <Postform 
+            handleClose={handleClose}
+            updatePireps={props.updatePireps}
+          />
         </div>
 
         </DialogContent>

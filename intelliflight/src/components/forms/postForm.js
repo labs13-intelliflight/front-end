@@ -17,10 +17,14 @@ export default class PostForm extends Component {
   }
 
   addPirep = e => {
+    e.preventDefault();
     axios
       .post("https://intelliflight-api.onrender.com/api/pireps/", this.state)
       .then(res => {
         this.setState({ post: res.data });
+      })
+      .then(() => {
+        this.props.updatePireps();
       })
       .catch(err => {
         console.log(err);
@@ -453,7 +457,10 @@ export default class PostForm extends Component {
               />
             </div>
           </div>
-          <button className="submit-btn-style">SUBMIT</button>
+          <button 
+            className="submit-btn-style"
+            onClick={this.props.handleClose}  
+          >SUBMIT</button>
         </form>
       </div>
     );
