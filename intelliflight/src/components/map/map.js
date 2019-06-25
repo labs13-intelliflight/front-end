@@ -48,6 +48,18 @@ class PirepMap extends React.Component {
       });
   }
 
+  updatePireps = () => {
+    Axios.get("https://intelliflight-api.onrender.com/api/pireps")
+      .then(res => {
+        this.setState({
+          pirepData: res.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   submitFlightPlan = event => {
     event.preventDefault();
     this.setState({
@@ -265,7 +277,7 @@ class PirepMap extends React.Component {
         {/* Renders Google Map */}
         {this.TestMap()}
 
-        {/* Testing Hour Window input form */}
+        {/* Hour Window input form */}
         
         <PIREPHistoryInput
           handleChange={this.handleChange}
@@ -286,7 +298,9 @@ class PirepMap extends React.Component {
           </div>
        
         <div className="pirep">
-          <FormDialog />
+          <FormDialog 
+            updatePireps={this.updatePireps}
+          />
         </div>
       </div>
     );
