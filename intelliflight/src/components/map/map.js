@@ -21,13 +21,6 @@ import FormDialog from "../materialUI/formdialog";
 import FlightPlanFormDialog from "../materialUI/flightplanFormDialog";
 import PIREPHistoryInput from "../forms/PIREPHistoryInput";
 
-// Set global variables for start and destination
-
-// let start;
-// let destination;
-// let hourWindow;
-// // let selectedPirep;
-
 class PirepMap extends React.Component {
   state = {
     pirepData: [],
@@ -185,7 +178,7 @@ class PirepMap extends React.Component {
               ]}
               geodesic={true}
               options={{
-                strokeColor: "#3F51B5",
+                strokeColor: "#FAA632",
                 strokeOpacity: 0.75,
                 strokeWeight: 5
               }}
@@ -229,7 +222,7 @@ class PirepMap extends React.Component {
 
   // Google Map configuration
 
-  TestMap = () => {
+  PirepMap = () => {
     const MapWrapped = withScriptjs(withGoogleMap(this.Map));
 
     return (
@@ -270,12 +263,10 @@ class PirepMap extends React.Component {
   };
 
   render() {
-    console.log(this.state.hourWindow)
     return (
       <div>
-        {" "}
         {/* Renders Google Map */}
-        {this.TestMap()}
+        {this.PirepMap()}
 
         {/* Hour Window input form */}
         

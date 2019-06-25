@@ -57,8 +57,8 @@ export default class PostForm extends Component {
       <div>
         {/* <h1>Submit Pirep</h1> */}
         <form onSubmit={this.addPirep}>
-          <div>
-            <label htmlFor="altitude">Altitude</label>
+          <div className="altitude">
+            <label htmlFor="altitude" className="altitude-label">Altitude</label>
             <input
               id="altitude"
               value={this.state.altitude}
