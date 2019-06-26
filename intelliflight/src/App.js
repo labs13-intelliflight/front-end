@@ -34,13 +34,7 @@ class App extends Component {
               <p className="logo-title">IntelliFlight</p>
             </Navbar.Brand>
             
-            <Button
-              bsstyle="primary"
-              className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
-            >
-              Home
-            </Button>
+            
             {
               !isAuthenticated() && (
                   <Button
