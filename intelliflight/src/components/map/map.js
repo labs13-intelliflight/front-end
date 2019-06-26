@@ -12,10 +12,11 @@ import Axios from "axios";
 // importing moment for time formating
 import moment from "moment"
 // functions import
-import WeatherIcon from "./functions/weather-icon.js";
-import IcingIcon from "./functions/icing.js";
-import TurbIcon from "./functions/turbulence.js";
-import distance from "./functions/distance-calculator";
+import {FlightLevel, Altitude, distance, WeatherIcon, TurbIcon, IcingIcon} from './functions/export.js'
+// import WeatherIcon from "./functions/weather-icon.js";
+// import IcingIcon from "./functions/icing.js";
+// import TurbIcon from "./functions/turbulence.js";
+// import distance from "./functions/distance-calculator";
 
 import FormDialog from "../materialUI/formdialog";
 import FlightPlanFormDialog from "../materialUI/flightplanFormDialog";
@@ -148,7 +149,7 @@ class PirepMap extends React.Component {
                   color: "black",
                   fontWeight: "bold",
                   fontSize: "12px",
-                  text: pirep.altitude,
+                  text:  FlightLevel(pirep.altitude),
                   background: "white",
                   margin: "10px"
                 }}
@@ -197,7 +198,7 @@ class PirepMap extends React.Component {
             >
               <div>
                 <p>Report</p>
-                <p>Altitude: {selectedPirep.altitude}00 feet</p>
+                <p>Altitude: {Altitude(selectedPirep.altitude)} feet</p>
                 <p>Latitude: {selectedPirep.latitude}</p>
                 <p>Longitude: {selectedPirep.longitude} </p>
                 <p>Turbulence: {selectedPirep.turbulence}</p>
