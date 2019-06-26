@@ -1,0 +1,249 @@
+/* //////////////////////////About Page Styles///////////////////////// */
+body {
+  background-color: #1172ad;
+}
+.addMargin {
+  margin: 20px 0 20px 0;
+}
+.header-container1 {
+  display: flex;
+  align-items: center;
+}
+
+.headerSpace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.banner {
+  display: flex;
+  margin-left: 5%;
+  margin-right: auto;
+  width: 50%;
+  height: auto;
+}
+
+.banner-words {
+  color: white;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  font-size: 25px;
+  text-decoration: none !important;
+  border-bottom-style: none !important;
+}
+
+.banner-words:hover {
+  text-decoration: none !important;
+  border-bottom-style: none !important;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orangeNav {
+  display: flex;
+  justify-content: space-around;
+  width: 45%;
+  min-height: 50px;
+  align-items: center;
+  background-color: #faa632;
+  margin-right: 2%;
+}
+
+.about {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: center;
+  margin: 40px 0 0 40px;
+  text-decoration: none !important;
+}
+
+.login {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: center;
+  margin: 40px 40px 0 0;
+  text-decoration: none !important;
+}
+
+.titleDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #faa632;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+.aboutTitle {
+  font-size: 40px;
+  margin: 30px;
+  color: white;
+}
+
+.section2 {
+  padding: 20px;
+}
+
+.member {
+  margin-bottom: 40px;
+  text-align: center;
+  background-color: dodgerblue;
+  border-radius: 5%;
+  padding: 10px;
+}
+
+.figure {
+  height: 170px;
+  width: auto;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 25pt;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+.position {
+  color: white;
+}
+
+.members-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.underline {
+  text-decoration: underline;
+  color: #faa632;
+}
+
+.madeBy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* //////////////////////////////////////////////////////////////TABLET MEDIA QUERY///////////////////// */
+@media only screen and (max-width: 835px) {
+  .titleDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #faa632;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
+
+  .aboutTitle {
+    font-size: 40px;
+    margin: 30px;
+    color: white;
+  }
+
+  .section2 {
+    padding: 20px;
+  }
+
+  .member {
+    border-radius: 0%;
+  }
+  .members-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* //////////////////////////////////////////////////////////////MEDIA QUERY///////////////////////// */
+@media only screen and (max-width: 600px) {
+  .header-container1 {
+    justify-content: center;
+    flex-direction: column;
+  }
+  .headerSpace {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .banner {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .banner-words {
+    text-align: center;
+    width: 55%;
+    font-size: 40px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .orangeNav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 2%;
+    padding: 20px;
+    height: auto;
+  }
+
+  .about {
+    font-size: 25px;
+    text-align: center;
+    margin: 0;
+    text-decoration: none !important;
+  }
+
+  .login {
+    font-size: 25px;
+    text-align: center;
+    margin: 0;
+    padding-top: 15px;
+    text-decoration: none !important;
+  }
+
+  .titleDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #faa632;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .aboutTitle {
+    font-size: 40px;
+    margin: 30px;
+    color: white;
+  }
+
+  .section2 {
+    padding: 20px;
+  }
+
+  .members-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
