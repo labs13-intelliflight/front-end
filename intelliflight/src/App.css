@@ -203,6 +203,7 @@ li.custom-style-list:hover {
 
 .plan-flight p {
   margin-bottom: 10px;
+  font-size: 1.125rem;
 }
 
 /* Flight Plan Media Queries */
