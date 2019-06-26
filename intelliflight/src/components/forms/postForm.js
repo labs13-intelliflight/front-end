@@ -20,14 +20,11 @@ export default class PostForm extends Component {
     e.preventDefault();
     axios
       .post("https://intelliflight-api.onrender.com/api/pireps/", this.state)
-      .then(res => {
-        this.setState({ post: res.data });
-      })
       .then(() => {
         this.props.updatePireps();
       })
       .catch(err => {
-        console.log(err);
+        alert('PIREP could not be added to the database', err);
       });
     this.setState({
       altitude: null,
@@ -47,12 +44,6 @@ export default class PostForm extends Component {
   };
 
   render() {
-    console.log("turbulence:", this.state.turbulence );
-    console.log( "icing:", this.state.icing );
-    console.log("weather:", this.state.weather );
-    console.log("lat:", this.state.latitude);
-    console.log("long:", this.state.longitude)
-
     return (
       <div>
         {/* <h1>Submit Pirep</h1> */}
