@@ -1,4 +1,6 @@
-import React, { useState}  from "react";
+import React, { useState } from "react";
+// importing moment for time formating
+import moment from "moment";
 import {
   GoogleMap,
   withScriptjs,
@@ -9,14 +11,15 @@ import {
 } from "react-google-maps";
 import mapStyles from "./mapStyles";
 import Axios from "axios";
-// importing moment for time formating
-import moment from "moment"
 // functions import
-import {FlightLevel, Altitude, distance, WeatherIcon, TurbIcon, IcingIcon} from './functions/export.js'
-// import WeatherIcon from "./functions/weather-icon.js";
-// import IcingIcon from "./functions/icing.js";
-// import TurbIcon from "./functions/turbulence.js";
-// import distance from "./functions/distance-calculator";
+import {
+  FlightLevel,
+  Altitude,
+  distance,
+  WeatherIcon,
+  TurbIcon,
+  IcingIcon
+} from "./functions/export.js";
 
 import FormDialog from "../materialUI/formdialog";
 import FlightPlanFormDialog from "../materialUI/flightplanFormDialog";
@@ -52,23 +55,23 @@ class PirepMap extends React.Component {
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
   submitFlightPlan = event => {
     event.preventDefault();
     this.setState({
-      start: JSON.parse(localStorage.getItem('start')),
-      destination: JSON.parse(localStorage.getItem('destination'))
-    })
-  }
+      start: JSON.parse(localStorage.getItem("start")),
+      destination: JSON.parse(localStorage.getItem("destination"))
+    });
+  };
 
   updateHourWindow = hours => {
     this.setState({
-        hourWindow: hours
-    })
-  }
+      hourWindow: hours
+    });
+  };
 
-// functions for flight markers
+  // functions for flight markers
   StartMarker = () => {
     if (this.state.start.coordinates) {
       return (
@@ -126,7 +129,6 @@ class PirepMap extends React.Component {
           defaultOptions={{ styles: mapStyles }}
         >
           {this.state.pirepData.map(pirep => {
-
             let date = new Date();
             date.setHours(date.getHours() - this.state.hourWindow);
 
@@ -149,19 +151,18 @@ class PirepMap extends React.Component {
                   color: "black",
                   fontWeight: "bold",
                   fontSize: "12px",
-                  text:  FlightLevel(pirep.altitude),
+                  text: FlightLevel(pirep.altitude),
                   background: "white",
                   margin: "10px"
                 }}
                 onClick={() => {
-                  setSelectedPirep(pirep)
+                  setSelectedPirep(pirep);
                 }}
               />
-              ) : (
-                console.log(false)
-              )
-            })
-          }
+            ) : (
+              console.log(false)
+            );
+          })}
 
           {this.StartMarker()}
           {this.DestinationMarker()}
@@ -193,7 +194,7 @@ class PirepMap extends React.Component {
                 lng: selectedPirep.longitude
               }}
               onCloseClick={() => {
-                setSelectedPirep(null)
+                setSelectedPirep(null);
               }}
             >
               <div>
@@ -204,18 +205,21 @@ class PirepMap extends React.Component {
                 <p>Turbulence: {selectedPirep.turbulence}</p>
                 <p>Icing: {selectedPirep.icing}</p>
                 <p>Description: {selectedPirep.description}</p>
-                
+
                 <p>
                   Weather:
-                  <img
-                    alt=""
-                    src={WeatherIcon(selectedPirep.weather)}
-                  />
-                </p><p> Created At: {moment(selectedPirep.created_at).format('MMMM Do YYYY, h:mm:ss a')}</p>
+                  <img alt="" src={WeatherIcon(selectedPirep.weather)} />
+                </p>
+                <p>
+                  {" "}
+                  Created At:{" "}
+                  {moment(selectedPirep.created_at).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                  )}
+                </p>
               </div>
             </InfoWindow>
           )}
-
         </GoogleMap>
       </div>
     );
@@ -270,29 +274,24 @@ class PirepMap extends React.Component {
         {this.PirepMap()}
 
         {/* Hour Window input form */}
-        
+
         <PIREPHistoryInput
           handleChange={this.handleChange}
           updateHourWindow={this.updateHourWindow}
         />
 
-          <div className="plan-distance flightDiv">
+        <div className="plan-distance flightDiv">
+          {/* Flight plan submission form */}
 
-            {/* Flight plan submission form */}
+          <FlightPlanFormDialog submitFlightPlan={this.submitFlightPlan} />
 
-            <FlightPlanFormDialog
-               submitFlightPlan={this.submitFlightPlan}
-            />
+          {/* will display distance */}
 
-            {/* will display distance */}
+          <p>{this.calculatedDistance()}</p>
+        </div>
 
-            <p>{this.calculatedDistance()}</p>
-          </div>
-       
         <div className="pirep">
-          <FormDialog 
-            updatePireps={this.updatePireps}
-          />
+          <FormDialog updatePireps={this.updatePireps} />
         </div>
       </div>
     );
