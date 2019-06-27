@@ -88,6 +88,9 @@ class PirepMap extends React.Component {
             fontSize: "18px",
             text: "A"
           }}
+          options={{
+            zIndex: 1000
+          }}
         />
       );
     } else {
@@ -109,6 +112,9 @@ class PirepMap extends React.Component {
             fontSize: "18px",
             text: "B"
           }}
+          options={{
+            zIndex: 1000
+          }}
         />
       );
     } else {
@@ -125,15 +131,15 @@ class PirepMap extends React.Component {
     return (
       <div>
         <GoogleMap
-          defaultZoom={4}
-          defaultCenter={{ lat: 40.7306, lng: -73.9352 }}
-          defaultOptions={{ styles: mapStyles }}
+          zoom={this.state.start ? 10 : 3}
+          center={this.state.start ? { lat: this.state.start.coordinates.lat, lng: this.state.start.coordinates.lng} : { lat: 30.5994, lng: -28.6731 }}
+          defaultOptions={{ styles: mapStyles }} 
         >
-          {this.state.pirepData.map(pirep => {
+          {this.state.pirepData.map((pirep, i) => {
             let date = new Date();
             date.setHours(date.getHours() - this.state.hourWindow);
 
-            return pirep.created_at >= date.toISOString() ? (
+            return pirep.created_at >= date.toISOString() && (
               <Marker
                 key={pirep.id}
                 position={{
@@ -159,9 +165,10 @@ class PirepMap extends React.Component {
                 onClick={() => {
                   setSelectedPirep(pirep);
                 }}
+                options={{
+                  zIndex: i
+                }}
               />
-            ) : (
-              console.log(false)
             );
           })}
 
@@ -251,7 +258,7 @@ class PirepMap extends React.Component {
     if (this.state.start && this.state.destination) {
       return (
         <div>
-          <h1>Total Miles:</h1>
+          <p>Total Miles:</p>
           {Math.ceil(
             distance(
               this.state.start.coordinates.lat,
@@ -288,7 +295,7 @@ class PirepMap extends React.Component {
 
           {/* will display distance */}
 
-          <p>{this.calculatedDistance()}</p>
+          {this.calculatedDistance()}
         </div>
         <div className="logoutButton">
           <Button
