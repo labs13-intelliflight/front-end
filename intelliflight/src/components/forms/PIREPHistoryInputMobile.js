@@ -19,7 +19,7 @@ class PirepHistoryInput extends React.Component {
 
   render() {
     return (
-      <form className="hourForm" onSubmit={this.updateHours}>
+      <form className="mobilehourForm" onSubmit={this.updateHours}>
         <p>PIREP History (hours)</p>
         <input
           className="custom-style"
@@ -28,15 +28,13 @@ class PirepHistoryInput extends React.Component {
           placeholder="Hour Window"
           onChange={this.handleChange}
         />
-        <button
-          button
-          className="hour-button-container"
-          onClick={this.props.handleClose}
-        >
+        <button className="hour-button-container"
+        onClick={this.props.handleClose}>
           <Button
             className="submit-btn-style"
             variant="contained"
             color="primary"
+              
           >
             Update
           </Button>
