@@ -27,8 +27,8 @@ class About extends React.Component {
             </div>
             <div className="orangeNav">
               <div className="nav-text-left">
-                <Link to="/about" className="about">
-                  ABOUT
+                <Link to="/" className="about">
+                  HOME
                 </Link>
               </div>
               <div id="buttons" className="nav-text-right">
@@ -88,13 +88,15 @@ class About extends React.Component {
           </div>
         </div>
 
-        <div className="madeBy">
-          <p className="">
-            Made by{" "}
-            <a id="buttons" href="/about.html" className="underline">
-              Intelliflight
-            </a>
-          </p>
+        <div className="blueFooter">
+          <div className="madeBy">
+            <p className="">
+              Made by{" "}
+              <a id="buttons" href="/about.html" className="underline">
+                Intelliflight
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     );

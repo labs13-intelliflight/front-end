@@ -3,59 +3,140 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
   font: inherit;
-	vertical-align: baseline;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: dodgerblue;
-  color: #000000
+  color: #000000;
 }
-.container{
+.container {
   display: flex;
   justify-content: center;
-  height:100vh;
+  height: 100vh;
 }
 .page-border {
   display: flex;
@@ -64,16 +145,16 @@ body {
   border: 2px solid white;
   border-radius: 10px;
   padding: 25px;
-  /* margin: 50px 70px 50px 70px; */
+  margin: 50px 70px 50px 70px;
   max-width: 500px;
-  height:500px;
-  margin: auto ;
+  height: 500px;
+  margin: auto;
 }
 
 /* Other Global Styles */
 
 .submit-btn-style {
-  background: #1B72AB;
+  background: #1b72ab;
   color: white;
   height: 35px;
   width: 120px;
@@ -84,42 +165,45 @@ body {
 }
 
 .orange {
-  background: #FAA632;
+  background: #faa632;
 }
 
-.nav-bar{
-  
-  display:flex;
+.nav-bar {
+  display: flex;
   justify-content: center;
   flex-direction: column;
-  margin:30px;
-  height: 300px;
-  width:60%;
+  margin: 30px;
 }
 
 .top-logo {
-  display:flex;
+  display: flex;
   justify-content: center;
   flex-direction: column;
   width: 100%;
   height: auto;
-  margin-bottom:20px;
+  margin-bottom: 25px;
 }
 
 .white-wings {
   display: flex;
   justify-content: center;
-  width: 400px;
   height: auto;
 }
 
 .logo-title {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   color: white;
   font-size: 56px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 11px;
+}
+
+.buttonBorder {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid white;
+  padding-top: 25px;
 }
 
 .btn-margin {
@@ -129,20 +213,21 @@ body {
   margin-bottom: 15px;
   display: flex;
   justify-content: center;
-  
+  font-size: 24px;
 }
+
 .example {
   display: none;
 }
 
-.pirep{
+.pirep {
   position: absolute;
-  left:10px;
+  left: 10px;
   top: 100px;
 }
 
-.postform{
-  margin:auto;
+.postform {
+  margin: auto;
   font-size: 18px;
 }
 
@@ -158,8 +243,8 @@ body {
 }
 
 .plan-label {
-  font-weight:bold;
-  color:white
+  font-weight: bold;
+  color: white;
 }
 
 /* Distance Display */
@@ -170,7 +255,7 @@ body {
   top: 200px;
   /* background: #FAA632; */
   text-align: center;
-  padding:10px;
+  padding: 10px;
 }
 
 .flightDiv p {
@@ -197,7 +282,7 @@ body {
 }
 
 li.custom-style-list:hover {
-  background: #1B72AB;
+  background: #1b72ab;
   cursor: pointer;
 }
 
@@ -216,16 +301,16 @@ li.custom-style-list:hover {
 /* Update Hour Window Form */
 
 .hourInput {
-  font-weight:bold;
+  font-weight: bold;
 }
-  
+
 .hourForm {
   position: absolute;
-  left:10px;
+  left: 10px;
   top: 400px;
-  background: #FAA632;
+  background: #faa632;
   text-align: center;
-  padding:10px;
+  padding: 10px;
 }
 
 .hourForm p {
@@ -322,14 +407,14 @@ li.custom-style-list:hover {
   /* background:  #f8f8ff; */
   padding: 15px 0 15px 0;
   /* border-radius: 5px; */
-  border-bottom:1px solid black
+  border-bottom: 1px solid black;
 }
 
 .weather-background {
-   background:  #f8f8ff;
-   border-radius: 20px;
-   padding:5px 5px 0px 0px;
-   margin:5px;
+  background: #f8f8ff;
+  border-radius: 20px;
+  padding: 5px 5px 0px 0px;
+  margin: 5px;
 }
 
 .weather-column {
@@ -348,7 +433,9 @@ li.custom-style-list:hover {
   padding: 20px 10px 0 10px;
 }
 
-.description, .latitude, .longitude {
+.description,
+.latitude,
+.longitude {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -357,8 +444,10 @@ li.custom-style-list:hover {
 
 /* description, lat, long Form Media Queries */
 
-@media(max-width: 500px) {
-  .description, .latitude, .longitude {
+@media (max-width: 500px) {
+  .description,
+  .latitude,
+  .longitude {
     flex-direction: column;
   }
 
