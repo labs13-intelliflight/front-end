@@ -24,7 +24,7 @@ import {
 import FormDialog from "../materialUI/formdialog";
 import FlightPlanFormDialog from "../materialUI/flightplanFormDialog";
 import PIREPHistoryInput from "../forms/PIREPHistoryInput";
-import MenuListComposition from '../materialUI/menu'
+import MenuListComposition from "../materialUI/menu";
 class PirepMap extends React.Component {
   state = {
     pirepData: [],
@@ -293,6 +293,14 @@ class PirepMap extends React.Component {
         <div className="pirep">
           <FormDialog updatePireps={this.updatePireps} />
         </div>
+        <div className="mobileMenu">
+        <MenuListComposition
+        submitFlightPlan={this.submitFlightPlan}
+        updatePireps={this.updatePireps}
+          handleChange={this.handleChange}
+          updateHourWindow={this.updateHourWindow}
+          logout={this.props.logout}
+        /></div>
       </div>
     );
   }
