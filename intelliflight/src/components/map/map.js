@@ -131,9 +131,9 @@ class PirepMap extends React.Component {
     return (
       <div>
         <GoogleMap
-          defaultZoom={4}
-          defaultCenter={{ lat: 40.7306, lng: -73.9352 }}
-          defaultOptions={{ styles: mapStyles }}
+          zoom={this.state.start ? 10 : 3}
+          center={this.state.start ? { lat: this.state.start.coordinates.lat, lng: this.state.start.coordinates.lng} : { lat: 30.5994, lng: -28.6731 }}
+          defaultOptions={{ styles: mapStyles }} 
         >
           {this.state.pirepData.map((pirep, i) => {
             let date = new Date();
