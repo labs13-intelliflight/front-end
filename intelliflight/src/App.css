@@ -398,6 +398,36 @@ li.custom-style-list:hover {
   width:auto
 
 }
+
+/* Info Window */
+
+.info-window {
+  background: white;
+}
+
+.pirep-info {
+  line-height: 2;
+}
+
+.pirep-info .pirep-title {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.pirep-info strong {
+  font-weight: bold;
+}
+
+.pirep-info img {
+  margin-left: 0.5rem;
+}
+
+.pirep-info .weather-tag {
+  display: flex;
+  align-items: center;
+}
+
 /* mobile menu */
 .mobileMenu{
   display:none;
