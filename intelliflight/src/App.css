@@ -150,13 +150,6 @@ body {
   font-size: 18px;
 }
 
-/* hour window input */
-
-.custom-style {
-  border: none;
-  background: white;
-}
-
 .plan-label {
   font-weight:bold;
   color:white
@@ -171,6 +164,7 @@ body {
   /* background: #FAA632; */
   text-align: center;
   padding:10px;
+  
 }
 
 .flightDiv p {
@@ -218,6 +212,7 @@ li.custom-style-list:hover {
 
 .hourInput {
   font-weight:bold;
+  
 }
   
 .hourForm {
@@ -227,10 +222,32 @@ li.custom-style-list:hover {
   background: #FAA632;
   text-align: center;
   padding:10px;
+  
+}
+
+.mobilehourForm {
+  text-align: center;
 }
 
 .hourForm p {
   margin-bottom: 10px;
+}
+/* hour window input */
+
+.custom-style {
+  border: none;
+  background: white;
+  width:100px;
+  margin-right:10px
+}
+.hour-button-container{
+  background:none;
+  border:none;
+}
+@media(max-width: 400px) {
+  .custom-style {
+    margin-right:0px
+  }
 }
 
 /* PIREP entry form */
@@ -305,6 +322,8 @@ li.custom-style-list:hover {
     width: 100%;
     margin-left: 0;
   }
+
+
 }
 
 /* weather icons */
@@ -366,4 +385,50 @@ li.custom-style-list:hover {
   .bottom-form-inputs label {
     margin-bottom: 10px;
   }
+}
+
+.hourformdialog{
+  width: 300px;
+  height:200px;
+  margin:auto;
+}
+
+.hourformdialog-container {
+  height:auto;
+  width:auto
+
+}
+/* mobile menu */
+.mobileMenu{
+  display:none;
+  position: absolute;
+  left:10px;
+  top: 100px;
+}
+.menu-button {
+  width:130px;
+}
+/* mobile display buttons */
+@media(max-width: 500px) {
+  .mobileMenu{
+    display:block;
+  }
+  .hourForm{
+    display:none;
+  }
+  .flightDiv{
+    display:none;
+  }
+  .pirep {
+    display:none;
+  }
+  .logoutButton{
+    display:none;
+  }
+}
+
+.logoutButton{
+  position: absolute;
+  left:10px;
+  top: 320px;
 }
