@@ -421,4 +421,13 @@ li.custom-style-list:hover {
   .pirep {
     display:none;
   }
+  .logoutButton{
+    display:none;
+  }
+}
+
+.logoutButton{
+  position: absolute;
+  left:10px;
+  top: 320px;
 }
