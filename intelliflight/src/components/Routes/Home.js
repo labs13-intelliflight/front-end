@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PirepMap from "../map/map";
+import Login from "../Login"
 
 class Home extends Component {
   login() {
@@ -17,20 +18,11 @@ class Home extends Component {
         )}
        
         {!isAuthenticated() && (
-          <h4>
-            You are not logged in! Please{" "}
-            <button
-              style={{ cursor: "pointer" }}
-              onClick={this.login.bind(this)}
-            >
-              Log In
-            </button>{" "}
-            to continue.
-          </h4>
+          <Login login={this.login.bind(this)}/>
         )}
       </div>
     );
   }
 }
 
-export default Home;
+export default Home
