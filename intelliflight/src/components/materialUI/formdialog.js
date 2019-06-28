@@ -19,7 +19,7 @@ export default function FormDialog(props) {
 
   return (
     <div>
-      <Button variant="contained" color="primary" className="btn-color" onClick={handleClickOpen}>
+      <Button variant="contained" color="primary" className="btn-color menu-button" onClick={handleClickOpen}>
         Pirep Entry
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
