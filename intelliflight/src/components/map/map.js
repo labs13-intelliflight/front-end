@@ -137,7 +137,7 @@ class PirepMap extends React.Component {
     return (
       <div>
         <GoogleMap
-          zoom={this.state.start ? 10 : 3}
+          defaultZoom={4}
           defaultCenter={this.state.start ? { lat: this.state.start.coordinates.lat, lng: this.state.start.coordinates.lng} : { lat: 40.7128, lng: -74.0060 }}
           defaultOptions={{ styles: mapStyles }} 
         >
