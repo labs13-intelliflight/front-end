@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div>
         <Landing/>
-{/* <PirepMap/> */}
+ {/* <PirepMap/> */}
       </div>
     );
   }
