@@ -92,9 +92,9 @@ class About extends React.Component {
           <div className="madeBy">
             <p className="">
               Made by{" "}
-              <a id="buttons" href="/about.html" className="underline">
-                Intelliflight
-              </a>
+              <Link to="/about" className="underline">
+              IntelliFlight
+            </Link>
             </p>
           </div>
         </div>

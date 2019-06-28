@@ -4,7 +4,7 @@ import "../landing/landing.css";
 import IntelliflightLogoWhite from "../../images/intelliflight-logo v1.png";
 
 import planePic from "../landing/landingPics/planewing.png";
-import iPad from "./landingPics/tablet.png";
+import iPad from "./landingPics/new image.png";
 
 class Landing extends React.Component {
   render() {
@@ -105,9 +105,9 @@ class Landing extends React.Component {
           <div className="madeBy">
             <p className="">
               Made by{" "}
-              <a id="buttons" href="/about.html" className="underline">
-                Intelliflight
-              </a>
+              <Link to="/about" className="underline">
+              IntelliFlight
+            </Link>
             </p>
           </div>
         </div>
