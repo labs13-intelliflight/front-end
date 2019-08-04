@@ -22,12 +22,14 @@ export default class PostForm extends Component {
       .post("https://intelliflightapp.herokuapp.com/api/pireps/", this.state)
       .then(res => {
         this.setState({ post: res.data });
-      })
-      .then(() => {
-        this.props.updatePireps();
-      })
+        console.log(res)
+        alert("Thank you for posting a report")
+      }).then(() => {
+          this.props.updatePireps();
+        })
       .catch(err => {
         console.log(err);
+        alert(err)
       });
     this.setState({
       altitude: null,
@@ -47,18 +49,20 @@ export default class PostForm extends Component {
   };
 
   render() {
-    console.log("turbulence:", this.state.turbulence );
-    console.log( "icing:", this.state.icing );
-    console.log("weather:", this.state.weather );
-    console.log("lat:", this.state.latitude);
-    console.log("long:", this.state.longitude)
+    // console.log("turbulence:", this.state.turbulence );
+    // console.log( "icing:", this.state.icing );
+    // console.log("weather:", this.state.weather );
+    // console.log("lat:", this.state.latitude);
+    // console.log("long:", this.state.longitude)
 
     return (
       <div>
         {/* <h1>Submit Pirep</h1> */}
         <form onSubmit={this.addPirep}>
           <div className="altitude">
-            <label htmlFor="altitude" className="altitude-label">Altitude</label>
+            <label htmlFor="altitude" className="altitude-label">
+              Altitude
+            </label>
             <input
               id="altitude"
               value={this.state.altitude}
@@ -67,209 +71,213 @@ export default class PostForm extends Component {
             />
           </div>
           <div className="form-flex">
-          <div className="turbulence form-column">
-          <h1>Turbulence</h1>
-            <div>
-              <input
-                id="nil-turbulence"
-                type="radio"
-                value="nil"
-                check={this.state.turbulence === "nil"}
-                onChange={this.handleChange}
-                name="turbulence"
-                placeholder="turbulence"
-              />
-              <label htmlFor="nil-turbulence">NIL</label>
-            </div>
-            <div>
-              <input
-                id="smooth-light-turbulence"
-                type="radio"
-                value="smooth-light"
-                check={this.state.turbulence === "smooth-light"}
-                onChange={this.handleChange}
-                name="turbulence"
-                placeholder="turbulence"
-              />
-              <label htmlFor="smooth-light-turbulence">Smooth-Light</label>
-            </div>
-            <div>
-              <input
-                id="light-turbulence"
-                type="radio"
-                value="light"
-                check={this.state.turbulence === "light"}
-                onChange={this.handleChange}
-                name="turbulence"
-                placeholder="turbulence"
-              />
-              <label htmlFor="light-turbulence">Light</label>
-            </div>
-            <div>
-              <input
-                id="light-moderate-turbulence"
-                type="radio"
-                value="light-moderate"
-                check={this.state.turbulence === "light-moderate"}
-                onChange={this.handleChange}
-                name="turbulence"
-                placeholder="turbulence"
-              />
-              <label htmlFor="light-moderate-turbulence">Light-Moderate</label>
-            </div>
-        
-            <div>
-              <input
-                id="moderate-turbulence"
-                type="radio"
-                value="moderate"
-                check={this.state.turbulence === "moderate"}
-                onChange={this.handleChange}
-                name="turbulence"
-                placeholder="turbulence"
-              />
-              <label htmlFor="moderate-turbulence">Moderate</label>
-            </div>
-            <div>
-              <input
-                id="moderate-severe-turbulence"
-                type="radio"
-                value="moderate-severe"
-                check={this.state.turbulence === "moderate-severe"}
-                onChange={this.handleChange}
-                name="turbulence"
-                placeholder="turbulence"
-              />
-              <label htmlFor="moderate-severe-turbulence">Moderate-Severe</label>
-            </div>
-            <div>
-              <input
-                id="severe-turbulence"
-                type="radio"
-                value="severe"
-                check={this.state.turbulence === "severe"}
-                onChange={this.handleChange}
-                name="turbulence"
-                placeholder="turbulence"
-              />
-              <label htmlFor="severe-turbulence">Severe</label>
-            </div>
-            <div>
-              <input
-                id="extreme-turbulence"
-                type="radio"
-                value="extreme"
-                check={this.state.turbulence === "extreme"}
-                onChange={this.handleChange}
-                name="turbulence"
-                placeholder="turbulence"
-              />
-              <label htmlFor="extreme-turbulence">Extreme</label>
-            </div>
-          </div>
+            <div className="turbulence form-column">
+              <h1>Turbulence</h1>
+              <div>
+                <input
+                  id="nil-turbulence"
+                  type="radio"
+                  value="nil"
+                  check={this.state.turbulence === "nil"}
+                  onChange={this.handleChange}
+                  name="turbulence"
+                  placeholder="turbulence"
+                />
+                <label htmlFor="nil-turbulence">NIL</label>
+              </div>
+              <div>
+                <input
+                  id="smooth-light-turbulence"
+                  type="radio"
+                  value="smooth-light"
+                  check={this.state.turbulence === "smooth-light"}
+                  onChange={this.handleChange}
+                  name="turbulence"
+                  placeholder="turbulence"
+                />
+                <label htmlFor="smooth-light-turbulence">Smooth-Light</label>
+              </div>
+              <div>
+                <input
+                  id="light-turbulence"
+                  type="radio"
+                  value="light"
+                  check={this.state.turbulence === "light"}
+                  onChange={this.handleChange}
+                  name="turbulence"
+                  placeholder="turbulence"
+                />
+                <label htmlFor="light-turbulence">Light</label>
+              </div>
+              <div>
+                <input
+                  id="light-moderate-turbulence"
+                  type="radio"
+                  value="light-moderate"
+                  check={this.state.turbulence === "light-moderate"}
+                  onChange={this.handleChange}
+                  name="turbulence"
+                  placeholder="turbulence"
+                />
+                <label htmlFor="light-moderate-turbulence">
+                  Light-Moderate
+                </label>
+              </div>
 
-          {/* ******************************************************************************************* */}
-         
-          <div className="icing form-column left-border">
-            <h1>Icing</h1>
-            <div>
-              <input
-                id="nil-icing"
-                type="radio"
-                value="nil"
-                check={this.state.icing === "nil"}
-                onChange={this.handleChange}
-                name="icing"
-                placeholder="icing"
-              />
-              <label htmlFor="nil-icing">NIL</label>
+              <div>
+                <input
+                  id="moderate-turbulence"
+                  type="radio"
+                  value="moderate"
+                  check={this.state.turbulence === "moderate"}
+                  onChange={this.handleChange}
+                  name="turbulence"
+                  placeholder="turbulence"
+                />
+                <label htmlFor="moderate-turbulence">Moderate</label>
+              </div>
+              <div>
+                <input
+                  id="moderate-severe-turbulence"
+                  type="radio"
+                  value="moderate-severe"
+                  check={this.state.turbulence === "moderate-severe"}
+                  onChange={this.handleChange}
+                  name="turbulence"
+                  placeholder="turbulence"
+                />
+                <label htmlFor="moderate-severe-turbulence">
+                  Moderate-Severe
+                </label>
+              </div>
+              <div>
+                <input
+                  id="severe-turbulence"
+                  type="radio"
+                  value="severe"
+                  check={this.state.turbulence === "severe"}
+                  onChange={this.handleChange}
+                  name="turbulence"
+                  placeholder="turbulence"
+                />
+                <label htmlFor="severe-turbulence">Severe</label>
+              </div>
+              <div>
+                <input
+                  id="extreme-turbulence"
+                  type="radio"
+                  value="extreme"
+                  check={this.state.turbulence === "extreme"}
+                  onChange={this.handleChange}
+                  name="turbulence"
+                  placeholder="turbulence"
+                />
+                <label htmlFor="extreme-turbulence">Extreme</label>
+              </div>
             </div>
-            <div>
-              <input
-                id="trace-icing"
-                type="radio"
-                value="trace"
-                check={this.state.icing === "trace"}
-                onChange={this.handleChange}
-                name="icing"
-                placeholder="icing"
-              />
-              <label htmlFor="trace-icing">Trace</label>
-            </div>
-            <div>
-              <input
-                id="trace-light-icing"
-                type="radio"
-                value="trace-light"
-                check={this.state.icing === "trace-light"}
-                onChange={this.handleChange}
-                name="icing"
-                placeholder="icing"
-              />
-              <label htmlFor="trace-light-icing">Trace-Light</label>
-            </div>
-            <div>
-              <input
-                id="light-icing"
-                type="radio"
-                value="light"
-                check={this.state.icing === "light"}
-                onChange={this.handleChange}
-                name="icing"
-                placeholder="icing"
-              />
-              <label htmlFor="light-icing">Light</label>
-            </div>
-            <div>
-              <input
-                id="light-moderate-icing"
-                type="radio"
-                value="light-moderate"
-                check={this.state.icing === "light-moderate"}
-                onChange={this.handleChange}
-                name="icing"
-                placeholder="icing"
-              />
-              <label htmlFor="light-moderate-icing">Light-Moderate</label>
-            </div>
-            <div>
-              <input
-                id="moderate-icing"
-                type="radio"
-                value="moderate"
-                check={this.state.icing === "moderate"}
-                onChange={this.handleChange}
-                name="icing"
-                placeholder="icing"
-              />
-              <label htmlFor="moderate-icing">Moderate</label>
-            </div>
-            <div>
-              <input
-                id="moderate-severe-icing"
-                type="radio"
-                value="moderate-severe"
-                check={this.state.icing === "moderate-severe"}
-                onChange={this.handleChange}
-                name="icing"
-                placeholder="icing"
-              />
-              <label htmlFor="moderate-severe-icing">Moderate-Severe</label>
-            </div>
-            <div>
-              <input
-                id="severe-icing"
-                type="radio"
-                value="severe"
-                check={this.state.icing === "severe"}
-                onChange={this.handleChange}
-                name="icing"
-                placeholder="icing"
-              />
-              <label htmlFor="severe-icing">Severe</label>
+
+            {/* ******************************************************************************************* */}
+
+            <div className="icing form-column left-border">
+              <h1>Icing</h1>
+              <div>
+                <input
+                  id="nil-icing"
+                  type="radio"
+                  value="nil"
+                  check={this.state.icing === "nil"}
+                  onChange={this.handleChange}
+                  name="icing"
+                  placeholder="icing"
+                />
+                <label htmlFor="nil-icing">NIL</label>
+              </div>
+              <div>
+                <input
+                  id="trace-icing"
+                  type="radio"
+                  value="trace"
+                  check={this.state.icing === "trace"}
+                  onChange={this.handleChange}
+                  name="icing"
+                  placeholder="icing"
+                />
+                <label htmlFor="trace-icing">Trace</label>
+              </div>
+              <div>
+                <input
+                  id="trace-light-icing"
+                  type="radio"
+                  value="trace-light"
+                  check={this.state.icing === "trace-light"}
+                  onChange={this.handleChange}
+                  name="icing"
+                  placeholder="icing"
+                />
+                <label htmlFor="trace-light-icing">Trace-Light</label>
+              </div>
+              <div>
+                <input
+                  id="light-icing"
+                  type="radio"
+                  value="light"
+                  check={this.state.icing === "light"}
+                  onChange={this.handleChange}
+                  name="icing"
+                  placeholder="icing"
+                />
+                <label htmlFor="light-icing">Light</label>
+              </div>
+              <div>
+                <input
+                  id="light-moderate-icing"
+                  type="radio"
+                  value="light-moderate"
+                  check={this.state.icing === "light-moderate"}
+                  onChange={this.handleChange}
+                  name="icing"
+                  placeholder="icing"
+                />
+                <label htmlFor="light-moderate-icing">Light-Moderate</label>
+              </div>
+              <div>
+                <input
+                  id="moderate-icing"
+                  type="radio"
+                  value="moderate"
+                  check={this.state.icing === "moderate"}
+                  onChange={this.handleChange}
+                  name="icing"
+                  placeholder="icing"
+                />
+                <label htmlFor="moderate-icing">Moderate</label>
+              </div>
+              <div>
+                <input
+                  id="moderate-severe-icing"
+                  type="radio"
+                  value="moderate-severe"
+                  check={this.state.icing === "moderate-severe"}
+                  onChange={this.handleChange}
+                  name="icing"
+                  placeholder="icing"
+                />
+                <label htmlFor="moderate-severe-icing">Moderate-Severe</label>
+              </div>
+              <div>
+                <input
+                  id="severe-icing"
+                  type="radio"
+                  value="severe"
+                  check={this.state.icing === "severe"}
+                  onChange={this.handleChange}
+                  name="icing"
+                  placeholder="icing"
+                />
+                <label htmlFor="severe-icing">Severe</label>
+              </div>
             </div>
           </div>
-        </div>
 
           {/* weather icons */}
           <div className="weather">
@@ -286,7 +294,9 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather1"><img src={WeatherIcon(1)} alt="" /></label>
+                  <label htmlFor="weather1">
+                    <img src={WeatherIcon(1)} alt="" />
+                  </label>
                 </div>
 
                 <div className="weather-background">
@@ -299,7 +309,9 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather2"><img src={WeatherIcon(2)} alt="" /></label>
+                  <label htmlFor="weather2">
+                    <img src={WeatherIcon(2)} alt="" />
+                  </label>
                 </div>
 
                 <div className="weather-background">
@@ -312,7 +324,9 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather3"><img src={WeatherIcon(3)} alt="" /></label>
+                  <label htmlFor="weather3">
+                    <img src={WeatherIcon(3)} alt="" />
+                  </label>
                 </div>
 
                 <div className="weather-background">
@@ -325,7 +339,9 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather4"><img src={WeatherIcon(4)} alt="" /></label>
+                  <label htmlFor="weather4">
+                    <img src={WeatherIcon(4)} alt="" />
+                  </label>
                 </div>
 
                 <div className="weather-background">
@@ -338,7 +354,9 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather5"><img src={WeatherIcon(5)} alt="" /></label>
+                  <label htmlFor="weather5">
+                    <img src={WeatherIcon(5)} alt="" />
+                  </label>
                 </div>
 
                 <div className="weather-background">
@@ -351,9 +369,10 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather6"><img src={WeatherIcon(6)} alt="" /></label>
+                  <label htmlFor="weather6">
+                    <img src={WeatherIcon(6)} alt="" />
+                  </label>
                 </div>
-
               </div>
 
               <div className="weather-column">
@@ -367,7 +386,9 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather7"><img src={WeatherIcon(7)} alt="" /></label>
+                  <label htmlFor="weather7">
+                    <img src={WeatherIcon(7)} alt="" />
+                  </label>
                 </div>
 
                 <div className="weather-background">
@@ -380,7 +401,9 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather8"><img src={WeatherIcon(8)} alt="" /></label>
+                  <label htmlFor="weather8">
+                    <img src={WeatherIcon(8)} alt="" />
+                  </label>
                 </div>
 
                 <div className="weather-background">
@@ -393,7 +416,9 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather9"><img src={WeatherIcon(9)} alt="" /></label>
+                  <label htmlFor="weather9">
+                    <img src={WeatherIcon(9)} alt="" />
+                  </label>
                 </div>
 
                 <div className="weather-background">
@@ -406,7 +431,9 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather10"><img src={WeatherIcon(10)} alt="" /></label>
+                  <label htmlFor="weather10">
+                    <img src={WeatherIcon(10)} alt="" />
+                  </label>
                 </div>
 
                 <div className="weather-background">
@@ -419,13 +446,15 @@ export default class PostForm extends Component {
                     name="weather"
                     placeholder="weather"
                   />
-                  <label htmlFor="weather11"><img src={WeatherIcon(11)} alt="" /></label>
+                  <label htmlFor="weather11">
+                    <img src={WeatherIcon(11)} alt="" />
+                  </label>
                 </div>
               </div>
             </div>
           </div>
 
-        {/* additional form inputs */}
+          {/* additional form inputs */}
 
           <div className="bottom-form-inputs">
             <div className="description">
@@ -457,10 +486,9 @@ export default class PostForm extends Component {
               />
             </div>
           </div>
-          <button 
-            className="submit-btn-style"
-            onClick={this.props.handleClose}  
-          >SUBMIT</button>
+          <button className="submit-btn-style" onClick={this.props.handleClose}>
+            SUBMIT
+          </button>
         </form>
       </div>
     );
