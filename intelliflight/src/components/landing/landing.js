@@ -2,23 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../landing/landing.css";
 import IntelliflightLogoWhite from "../../images/intelliflight-logo v1.png";
-import planePicture from "../landing/landingPics/planewing.png";
+
+import planePic from "../landing/landingPics/planewing.png";
+import iPad from "./landingPics/new image.png";
 
 class Landing extends React.Component {
   render() {
     return (
       <div>
+        <img className="bigPic" alt="planeWing"src={planePic} />
+
         <div className="addMargin">
           <div className="nav-container">
             <div className="header-container1">
-              <a className="headerSpace" href="index.html">
+              <div className="headerSpace" href="index.html">
                 <img
                   className="banner"
                   alt="main logo"
                   src={IntelliflightLogoWhite}
                 />
                 <h1 className="banner-words">IntelliFlight</h1>
-              </a>
+              </div>
             </div>
             <div className="orangeNav">
               <div className="nav-text-left">
@@ -34,20 +38,23 @@ class Landing extends React.Component {
             </div>
           </div>
         </div>
-        <div className="bigPic">
-          <img src={planePicture} class="planePic" alt="big plane" />
-        </div>
-        <div className="placementPara">
+
+        <div className="planeSection">
           <div className="heroContainer">
             <h1 className="heroText1">Create flight plans in seconds</h1>
             <p className="heroText2">
               Keep track of weather events with real-time pilot report updates
             </p>
-            <button className="heroButton">Sign Up</button>
+            <Link to="/home" className="heroButton">
+              Sign Up
+            </Link>
           </div>
         </div>
 
         <div className="whiteBack">
+          <div className="ipadSim">
+            <img className="ipad" alt="iPad" src={iPad} />
+          </div>
           <div className="midContent">
             <div className="topCard">
               <p className="reviewWord">
@@ -68,42 +75,42 @@ class Landing extends React.Component {
         <div className="greyBack">
           <h1 className="bottomTitle">Simpliflied flight planning strategy</h1>
           <div className="bottomCards">
-            <div className="card">
-              <img />
-              <h3 className="boldTitle">Easy to use</h3>
+            <div className="card1">
+              <h3 className="boldTitle">Create and view Pirep reports</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus ultricies massa risus, a cursus tortor malesuada id.
-                In eget quam id sapien tincidunt tempus sed nec est. In a congue
-                turpis. Morbi tristique sit amet neque id blandit.
+                Using our Application, we allow you to report your previous
+                flights. You can record things like: Icing, Turbulence,
+                Altitude, Longitude, Latitude, and Weather. You can also view
+                other Pireps reported by other pilots all over the world.
               </p>
             </div>
 
-            <div className="card">
-              <img />
-              <h3 className="boldTitle">Pirep updates</h3>
+            <div className="card2">
+              <h3 className="boldTitle">Plan your Flight</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus ultricies massa risus, a cursus tortor malesuada id.
-                In eget quam id sapien tincidunt tempus sed nec est. In a congue
-                turpis. Morbi tristique sit amet neque id blandit.
-              </p>
-            </div>
-
-            <div className="card">
-              <img />
-              <h3 className="boldTitle">Flexible feature list</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus ultricies massa risus, a cursus tortor malesuada id.
-                In eget quam id sapien tincidunt tempus sed nec est. In a congue
-                turpis. Morbi tristique sit amet neque id blandit.
+                Using our app, you can plan a flight by searching for your
+                Airport and destination. It will then show you on the map the
+                quickest route, and it will show you the distance in miles
+                between those points.
               </p>
             </div>
           </div>
-        <button className="bottomButton">Sign Up</button>
+          <div className="btnContainer">
+            <Link to="/home" className="bottomButton">
+              Sign Up
+            </Link>
+          </div>
         </div>
-
+        <div className="blueFooter">
+          <div className="madeBy">
+            <p className="">
+              Made by{" "}
+              <Link to="/about" className="underline">
+              IntelliFlight
+            </Link>
+            </p>
+          </div>
+        </div>
       </div>
     );
   }

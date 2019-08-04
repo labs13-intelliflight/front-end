@@ -14,7 +14,7 @@ class Login extends Component {
                     <p className="logo-title">IntelliFlight</p>
                   </Navbar.Brand>
                   
-                
+                      <div className="buttonBorder"> 
                         <Button
                           id="qsLoginBtn"
                           bsstyle="primary"
@@ -23,6 +23,7 @@ class Login extends Component {
                         >
                           Log In
                         </Button>
+                        </div>
                   {/* {
                     isAuthenticated() && (
                         <Button

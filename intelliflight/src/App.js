@@ -19,8 +19,13 @@ class App extends Component {
   render() {
     return (
       <div>
+<<<<<<< HEAD
         {/* <Landing/> */}
 <PirepMap/> 
+=======
+        <Landing/>
+ {/* <PirepMap/> */}
+>>>>>>> 3adf461da64f9a5541025929a2ad670d1ba26e96
       </div>
     );
   }
