@@ -6,13 +6,13 @@ export default class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      altitude: null,
-      turbulence: null,
-      icing: null,
-      weather: null,
-      description: null,
-      latitude: "",
-      longitude: ""
+      altitude: '',
+      turbulence: '',
+      icing: '',
+      weather: '',
+      description: '',
+      latitude: '',
+      longitude: ''
     };
   }
 
@@ -27,16 +27,16 @@ export default class PostForm extends Component {
         this.props.updatePireps();
       })
       .catch(err => {
-        console.log(err);
+        alert('PIREP could not be added to the database', err);
       });
     this.setState({
-      altitude: null,
-      turbulence: null,
-      icing: null,
-      weather: null,
-      description: null,
-      latitude: "",
-      longitude: ""
+      altitude: '',
+      turbulence: '',
+      icing: '',
+      weather: '',
+      description: '',
+      latitude: '',
+      longitude: ''
     });
   };
 
@@ -47,12 +47,6 @@ export default class PostForm extends Component {
   };
 
   render() {
-    console.log("turbulence:", this.state.turbulence );
-    console.log( "icing:", this.state.icing );
-    console.log("weather:", this.state.weather );
-    console.log("lat:", this.state.latitude);
-    console.log("long:", this.state.longitude)
-
     return (
       <div>
         {/* <h1>Submit Pirep</h1> */}
@@ -74,7 +68,7 @@ export default class PostForm extends Component {
                 id="nil-turbulence"
                 type="radio"
                 value="nil"
-                check={this.state.turbulence === "nil"}
+                check={this.state.turbulence === "nil" ? "nil" : undefined}
                 onChange={this.handleChange}
                 name="turbulence"
                 placeholder="turbulence"
@@ -86,7 +80,7 @@ export default class PostForm extends Component {
                 id="smooth-light-turbulence"
                 type="radio"
                 value="smooth-light"
-                check={this.state.turbulence === "smooth-light"}
+                check={this.state.turbulence === "smooth-light" ? "smooth-light" : undefined}
                 onChange={this.handleChange}
                 name="turbulence"
                 placeholder="turbulence"
@@ -98,7 +92,7 @@ export default class PostForm extends Component {
                 id="light-turbulence"
                 type="radio"
                 value="light"
-                check={this.state.turbulence === "light"}
+                check={this.state.turbulence === "light" ? "light" : undefined}
                 onChange={this.handleChange}
                 name="turbulence"
                 placeholder="turbulence"
@@ -110,7 +104,7 @@ export default class PostForm extends Component {
                 id="light-moderate-turbulence"
                 type="radio"
                 value="light-moderate"
-                check={this.state.turbulence === "light-moderate"}
+                check={this.state.turbulence === "light-moderate" ? "light-moderate" : undefined}
                 onChange={this.handleChange}
                 name="turbulence"
                 placeholder="turbulence"
@@ -123,7 +117,7 @@ export default class PostForm extends Component {
                 id="moderate-turbulence"
                 type="radio"
                 value="moderate"
-                check={this.state.turbulence === "moderate"}
+                check={this.state.turbulence === "moderate" ? "moderate" : undefined}
                 onChange={this.handleChange}
                 name="turbulence"
                 placeholder="turbulence"
@@ -135,7 +129,7 @@ export default class PostForm extends Component {
                 id="moderate-severe-turbulence"
                 type="radio"
                 value="moderate-severe"
-                check={this.state.turbulence === "moderate-severe"}
+                check={this.state.turbulence === "moderate-severe" ? "moderate-severe" : undefined}
                 onChange={this.handleChange}
                 name="turbulence"
                 placeholder="turbulence"
@@ -147,7 +141,7 @@ export default class PostForm extends Component {
                 id="severe-turbulence"
                 type="radio"
                 value="severe"
-                check={this.state.turbulence === "severe"}
+                check={this.state.turbulence === "severe" ? "severe" : undefined}
                 onChange={this.handleChange}
                 name="turbulence"
                 placeholder="turbulence"
@@ -159,7 +153,7 @@ export default class PostForm extends Component {
                 id="extreme-turbulence"
                 type="radio"
                 value="extreme"
-                check={this.state.turbulence === "extreme"}
+                check={this.state.turbulence === "extreme" ? "extreme" : undefined}
                 onChange={this.handleChange}
                 name="turbulence"
                 placeholder="turbulence"
@@ -177,7 +171,7 @@ export default class PostForm extends Component {
                 id="nil-icing"
                 type="radio"
                 value="nil"
-                check={this.state.icing === "nil"}
+                check={this.state.icing === "nil" ? "nil" : undefined}
                 onChange={this.handleChange}
                 name="icing"
                 placeholder="icing"
@@ -189,7 +183,7 @@ export default class PostForm extends Component {
                 id="trace-icing"
                 type="radio"
                 value="trace"
-                check={this.state.icing === "trace"}
+                check={this.state.icing === "trace" ? "trace" : undefined}
                 onChange={this.handleChange}
                 name="icing"
                 placeholder="icing"
@@ -201,7 +195,7 @@ export default class PostForm extends Component {
                 id="trace-light-icing"
                 type="radio"
                 value="trace-light"
-                check={this.state.icing === "trace-light"}
+                check={this.state.icing === "trace-light" ? "trace-light" : undefined}
                 onChange={this.handleChange}
                 name="icing"
                 placeholder="icing"
@@ -213,7 +207,7 @@ export default class PostForm extends Component {
                 id="light-icing"
                 type="radio"
                 value="light"
-                check={this.state.icing === "light"}
+                check={this.state.icing === "light" ? "light" : undefined}
                 onChange={this.handleChange}
                 name="icing"
                 placeholder="icing"
@@ -225,7 +219,7 @@ export default class PostForm extends Component {
                 id="light-moderate-icing"
                 type="radio"
                 value="light-moderate"
-                check={this.state.icing === "light-moderate"}
+                check={this.state.icing === "light-moderate" ? "light-moderate" : undefined}
                 onChange={this.handleChange}
                 name="icing"
                 placeholder="icing"
@@ -237,7 +231,7 @@ export default class PostForm extends Component {
                 id="moderate-icing"
                 type="radio"
                 value="moderate"
-                check={this.state.icing === "moderate"}
+                check={this.state.icing === "moderate" ? "moderate" : undefined}
                 onChange={this.handleChange}
                 name="icing"
                 placeholder="icing"
@@ -249,7 +243,7 @@ export default class PostForm extends Component {
                 id="moderate-severe-icing"
                 type="radio"
                 value="moderate-severe"
-                check={this.state.icing === "moderate-severe"}
+                check={this.state.icing === "moderate-severe" ? "moderate-severe" : undefined}
                 onChange={this.handleChange}
                 name="icing"
                 placeholder="icing"
@@ -261,7 +255,7 @@ export default class PostForm extends Component {
                 id="severe-icing"
                 type="radio"
                 value="severe"
-                check={this.state.icing === "severe"}
+                check={this.state.icing === "severe" ? "severe" : undefined}
                 onChange={this.handleChange}
                 name="icing"
                 placeholder="icing"
@@ -281,7 +275,7 @@ export default class PostForm extends Component {
                     id="weather1"
                     type="radio"
                     value="1"
-                    check={this.state.weather === "1"}
+                    check={this.state.weather === "1" ? "1" : undefined}
                     onChange={this.handleChange}
                     name="weather"
                     placeholder="weather"
@@ -294,7 +288,7 @@ export default class PostForm extends Component {
                     id="weather2"
                     type="radio"
                     value="2"
-                    check={this.state.weather === "2"}
+                    check={this.state.weather === "2" ? "2" : undefined}
                     onChange={this.handleChange}
                     name="weather"
                     placeholder="weather"
@@ -307,7 +301,7 @@ export default class PostForm extends Component {
                     id="weather3"
                     type="radio"
                     value="3"
-                    check={this.state.weather === "3"}
+                    check={this.state.weather === "3" ? "3" : undefined}
                     onChange={this.handleChange}
                     name="weather"
                     placeholder="weather"
@@ -320,7 +314,7 @@ export default class PostForm extends Component {
                     id="weather4"
                     type="radio"
                     value="4"
-                    check={this.state.weather === "4"}
+                    check={this.state.weather === "4" ? "4" : undefined}
                     onChange={this.handleChange}
                     name="weather"
                     placeholder="weather"
@@ -333,7 +327,7 @@ export default class PostForm extends Component {
                     id="weather5"
                     type="radio"
                     value="5"
-                    check={this.state.weather === "5"}
+                    check={this.state.weather === "5" ? "5" : undefined}
                     onChange={this.handleChange}
                     name="weather"
                     placeholder="weather"
@@ -346,7 +340,7 @@ export default class PostForm extends Component {
                     id="weather6"
                     type="radio"
                     value="6"
-                    check={this.state.weather === "6"}
+                    check={this.state.weather === "6" ? "6" : undefined}
                     onChange={this.handleChange}
                     name="weather"
                     placeholder="weather"
@@ -362,7 +356,7 @@ export default class PostForm extends Component {
                     id="weather7"
                     type="radio"
                     value="7"
-                    check={this.state.weather === "7"}
+                    check={this.state.weather === "7" ? "7" : undefined}
                     onChange={this.handleChange}
                     name="weather"
                     placeholder="weather"
@@ -375,7 +369,7 @@ export default class PostForm extends Component {
                     id="weather8"
                     type="radio"
                     value="8"
-                    check={this.state.weather === "8"}
+                    check={this.state.weather === "8" ? "8" : undefined}
                     onChange={this.handleChange}
                     name="weather"
                     placeholder="weather"
@@ -388,7 +382,7 @@ export default class PostForm extends Component {
                     id="weather9"
                     type="radio"
                     value="9"
-                    check={this.state.weather === "9"}
+                    check={this.state.weather === "9" ? "9" : undefined}
                     onChange={this.handleChange}
                     name="weather"
                     placeholder="weather"
@@ -401,7 +395,7 @@ export default class PostForm extends Component {
                     id="weather10"
                     type="radio"
                     value="10"
-                    check={this.state.weather === "10"}
+                    check={this.state.weather === "10" ? "10" : undefined}
                     onChange={this.handleChange}
                     name="weather"
                     placeholder="weather"
@@ -414,7 +408,7 @@ export default class PostForm extends Component {
                     id="weather11"
                     type="radio"
                     value="11"
-                    check={this.state.weather === "11"}
+                    check={this.state.weather === "11" ? "11" : undefined}
                     onChange={this.handleChange}
                     name="weather"
                     placeholder="weather"

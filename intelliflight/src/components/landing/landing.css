@@ -2,9 +2,26 @@
 body {
   background-color: #1172ad;
 }
+
+.bigPic {
+  width: auto;
+  height: 100%;
+  right: 0%;
+  position: absolute;
+  z-index: -1;
+}
+
 .addMargin {
   margin: 20px 0 20px 0;
+  position: absolute;
+  width: 100%;
+  top: 0%;
 }
+
+.nav-container {
+  width: 100%;
+}
+
 .header-container1 {
   display: flex;
   align-items: center;
@@ -14,7 +31,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .banner {
@@ -41,20 +58,15 @@ body {
   border-bottom-style: none !important;
 }
 
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .orangeNav {
   display: flex;
   justify-content: space-around;
+
   width: 45%;
   min-height: 50px;
   align-items: center;
   background-color: #faa632;
-  margin-right: 2%;
+  margin-right: 0 !important;
 }
 
 .about {
@@ -77,75 +89,83 @@ body {
   text-decoration: none !important;
 }
 
-.bigPic {
-  width: 60%;
-  height: auto;
+.planeSection {
   display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  left: 50%;
-  bottom: 30%;
-  z-index: -1;
-}
-.planePic {
   width: 100%;
-  height: auto;
-}
-
-.placementPara {
-  margin: 40px;
-  margin-top: 150px;
-  display: flex;
 }
 
 .heroContainer {
   display: flex;
   flex-direction: column;
+  margin-left: 40px;
+  margin-bottom: 40px;
+  margin-top: 150px;
+  width: 50%;
+  height: auto;
 }
 
 .heroText1 {
   font-weight: bold;
   font-family: "Roboto", sans-serif;
   color: white;
-  font-size: 40px;
+  font-size: 38px;
   padding-bottom: 20px;
+  flex-wrap: wrap;
 }
-
 .heroText2 {
   font-weight: normal;
   font-family: "Roboto", sans-serif;
   color: white;
-  font-size: 17px;
+  font-size: 20px;
   padding-bottom: 35px;
   width: 62%;
 }
-
 .heroButton {
+  display: flex;
+  justify-content: center;
   width: 33%;
-  margin: 0;
   background-color: dodgerblue;
   color: white;
   border-radius: 5px;
   padding: 10px;
   font-size: 19px;
-  border-color: #3f3f3f;
 }
 
 .whiteBack {
+  display: flex;
+  flex-direction: row;
   margin-top: 200px;
   border-top: 1px solid #3f3f3f;
   width: 100%;
   height: 400px;
   background-color: white;
   padding: 7%;
+  position: relative;
 }
 
 .midContent {
-  display: flex;
+  /* display: none; */
   margin-left: 450px;
   width: 46%;
   justify-content: center;
   flex-direction: column;
+  /*position: relative;
+  bottom: 250%;
+  right: 4%;*/
+}
+.ipadSim {
+  width: 30%;
+  height: auto;
+  left: 50px;
+  position: absolute;
+  bottom: 50px;
+  max-height: 572px;
+  max-width: 405px;
+}
+
+.ipad {
+  width: 100%;
+  height: auto;
 }
 
 .topCard {
@@ -168,7 +188,7 @@ body {
 .greyBack {
   border-top: 1px solid #3f3f3f;
   width: 100%;
-  height: 450px;
+  height: auto;
   background-color: #d8d8d8;
   padding: 4%;
 }
@@ -189,12 +209,26 @@ body {
   justify-content: space-evenly;
 }
 
-.card {
+.card1 {
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   color: #3f3f3f;
   background-color: #d8d8d8;
   border: none;
   font-size: 18px;
+  padding-right: 3%;
+}
+
+.card2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #3f3f3f;
+  background-color: #d8d8d8;
+  border: none;
+  font-size: 18px;
+  padding-left: 7%;
 }
 
 .boldTitle {
@@ -202,6 +236,12 @@ body {
   font-weight: bold;
   margin-bottom: 20px;
 }
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+}
+
 .bottomButton {
   display: flex;
   justify-content: center;
@@ -213,4 +253,228 @@ body {
   padding: 10px;
   font-size: 19px;
   border-color: #3f3f3f;
+}
+
+.blueFooter {
+  border-top: 1px solid #3f3f3f;
+  width: 100%;
+  height: 50px;
+  background-color: #1172ad;
+  padding: 4%;
+}
+
+.madeBy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* /////////////////////////////////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////TABLET//////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////// */
+
+@media only screen and (max-width: 999px) {
+  .bigPic {
+    display: none;
+  }
+
+  .heroContainer {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-left:0;
+  }
+
+  .heroText1 {
+    width: 100%;
+  }
+  .heroText2 {
+    width: 100%;
+  }
+  .heroButton {
+    margin-left: 33%;
+  }
+
+  .whiteBack {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0px;
+    border-top: 1px solid #3f3f3f;
+    width: 100%;
+    height: 300px;
+    background-color: white;
+    padding: 7%;
+    position: relative;
+  }
+
+  .midContent {
+    display: flex;
+    margin-left: 0px;
+    text-align: center;
+    width: 100%;
+  }
+  .ipadSim {
+    display: none;
+  }
+
+  .ipad {
+    display: none;
+  }
+
+  .topCard {
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    margin-top: 0px;
+    padding: 30px 40px 30px 40px;
+    background-color: dodgerblue;
+    display: flex;
+  }
+
+  .bottomCard {
+    width: 100%;
+    justify-content: center;
+    padding: 30px 40px 30px 40px;
+    background-color: #1172ad;
+    display: flex;
+  }
+
+  .greyBack {
+    border-top: 1px solid #3f3f3f;
+    width: 100%;
+    height: auto;
+    background-color: #d8d8d8;
+    padding: 4%;
+  }
+  .bottomTitle {
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+  }
+
+  .bottomCards {
+    margin: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .card1 {
+    width: 100%;
+    font-size: 18px;
+    padding-right: 3%;
+  }
+
+  .card2 {
+    width: 100%;
+    font-size: 18px;
+    padding-left: 7%;
+  }
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+@media only screen and (max-width: 660px) {
+  .header-container1 {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .headerSpace {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .banner {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+  }
+
+  .banner-words {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+    font-size: 40px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .orangeNav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 2%;
+    padding: 20px;
+    height: auto;
+  }
+  .nav-text-left{
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #3f3f3f;
+  }
+  .nav-text-right{
+    margin-top: 10px;
+  }
+  .about {
+    font-size: 25px;
+    text-align: center;
+    margin: 0;
+    text-decoration: none !important;
+  }
+
+  .login {
+    font-size: 25px;
+    text-align: center;
+    margin: 0;
+    padding-top: 15px;
+    text-decoration: none !important;
+  }
+
+  .heroContainer {
+    margin-top: 320px;
+  }
+  .bottomTitle {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .bottomCards {
+    flex-direction: column;
+  }
+  .card1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 20px;
+  }
+  .card2 {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    padding-left: 0;
+  }
+  .bottomButton {
+    margin-bottom: 10px;
+    width: 40%;
+  }
 }

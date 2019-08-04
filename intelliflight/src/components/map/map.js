@@ -47,6 +47,8 @@ class PirepMap extends React.Component {
       });
   }
 
+  // Update PIREP Markers
+
   updatePireps = () => {
     Axios.get("https://intelliflightapp.herokuapp.com/api/pireps")
       .then(res => {
@@ -59,6 +61,8 @@ class PirepMap extends React.Component {
       });
   };
 
+  // Set Starting and Destination Points for Flight Path
+
   submitFlightPlan = event => {
     event.preventDefault();
     this.setState({
@@ -66,6 +70,8 @@ class PirepMap extends React.Component {
       destination: JSON.parse(localStorage.getItem("destination"))
     });
   };
+
+  // Update hourWindow for PIREP History Display
 
   updateHourWindow = hours => {
     this.setState({
@@ -89,6 +95,9 @@ class PirepMap extends React.Component {
             fontSize: "18px",
             text: "A"
           }}
+          options={{
+            zIndex: 1000
+          }}
         />
       );
     } else {
@@ -110,6 +119,9 @@ class PirepMap extends React.Component {
             fontSize: "18px",
             text: "B"
           }}
+          options={{
+            zIndex: 1000
+          }}
         />
       );
     } else {
@@ -127,14 +139,14 @@ class PirepMap extends React.Component {
       <div>
         <GoogleMap
           defaultZoom={4}
-          defaultCenter={{ lat: 40.7306, lng: -73.9352 }}
-          defaultOptions={{ styles: mapStyles }}
+          defaultCenter={this.state.start ? { lat: this.state.start.coordinates.lat, lng: this.state.start.coordinates.lng} : { lat: 40.7128, lng: -74.0060 }}
+          defaultOptions={{ styles: mapStyles }} 
         >
-          {this.state.pirepData.map(pirep => {
+          {this.state.pirepData.map((pirep, i) => {
             let date = new Date();
             date.setHours(date.getHours() - this.state.hourWindow);
 
-            return pirep.created_at >= date.toISOString() ? (
+            return pirep.created_at >= date.toISOString() && (
               <Marker
                 key={pirep.id}
                 position={{
@@ -160,9 +172,10 @@ class PirepMap extends React.Component {
                 onClick={() => {
                   setSelectedPirep(pirep);
                 }}
+                options={{
+                  zIndex: i
+                }}
               />
-            ) : (
-              console.log(false)
             );
           })}
 
@@ -191,6 +204,7 @@ class PirepMap extends React.Component {
 
           {selectedPirep && (
             <InfoWindow
+              className="info-window"
               position={{
                 lat: selectedPirep.latitude,
                 lng: selectedPirep.longitude
@@ -199,22 +213,22 @@ class PirepMap extends React.Component {
                 setSelectedPirep(null);
               }}
             >
-              <div>
-                <p>Report</p>
-                <p>Altitude: {Altitude(selectedPirep.altitude)} feet</p>
-                <p>Latitude: {selectedPirep.latitude}</p>
-                <p>Longitude: {selectedPirep.longitude} </p>
-                <p>Turbulence: {selectedPirep.turbulence}</p>
-                <p>Icing: {selectedPirep.icing}</p>
-                <p>Description: {selectedPirep.description}</p>
+              <div className="pirep-info">
+                <p className="pirep-title">Pilot Report</p>
+                <p><strong>Altitude:</strong> {Altitude(selectedPirep.altitude)} feet</p>
+                <p><strong>Latitude:</strong> {selectedPirep.latitude}</p>
+                <p><strong>Longitude:</strong> {selectedPirep.longitude} </p>
+                <p><strong>Turbulence:</strong> {selectedPirep.turbulence}</p>
+                <p><strong>Icing:</strong> {selectedPirep.icing}</p>
+                <p><strong>Description:</strong> {selectedPirep.description}</p>
 
-                <p>
-                  Weather:
-                  <img alt="" src={WeatherIcon(selectedPirep.weather)} />
+                <p className="weather-tag">
+                <strong>Weather:</strong>
+                  <img alt="weather icon" src={WeatherIcon(selectedPirep.weather)} />
                 </p>
                 <p>
                   {" "}
-                  Created At:{" "}
+                  <strong>Created At:{" "}</strong>
                   {moment(selectedPirep.created_at).format(
                     "MMMM Do YYYY, h:mm:ss a"
                   )}
@@ -252,7 +266,7 @@ class PirepMap extends React.Component {
     if (this.state.start && this.state.destination) {
       return (
         <div>
-          <h1>Total Miles:</h1>
+          <p>Total Miles:</p>
           {Math.ceil(
             distance(
               this.state.start.coordinates.lat,
@@ -289,7 +303,7 @@ class PirepMap extends React.Component {
 
           {/* will display distance */}
 
-          <p>{this.calculatedDistance()}</p>
+          {this.calculatedDistance()}
         </div>
         <div className="logoutButton">
           <Button

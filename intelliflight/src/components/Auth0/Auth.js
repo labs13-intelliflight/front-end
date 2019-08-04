@@ -18,7 +18,7 @@ export default class Auth {
     // redirectUri: AUTH_CONFIG.callbackUrl,
     redirectUri: process.env.REACT_APP_CALLBACK_URL,
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid email'
   });
 
   constructor() {
@@ -99,6 +99,9 @@ export default class Auth {
 
     // Remove isLoggedIn flag from localStorage
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
 
     this.auth0.logout({
       returnTo: window.location.origin
