@@ -79,7 +79,7 @@ export default class Auth {
       }
     };
 
-    axios.post('https://intelliflight-api.onrender.com/auth/register', user, config)
+    axios.post('https://intelliflightapp.herokuapp.com/auth/register', user, config)
       .then(res => { 
         console.log(res.data)
        })

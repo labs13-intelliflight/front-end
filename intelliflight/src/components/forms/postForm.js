@@ -19,7 +19,7 @@ export default class PostForm extends Component {
   addPirep = e => {
     e.preventDefault();
     axios
-      .post("https://intelliflight-api.onrender.com/api/pireps/", this.state)
+      .post("https://intelliflightapp.herokuapp.com/api/pireps/", this.state)
       .then(res => {
         this.setState({ post: res.data });
       })
