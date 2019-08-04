@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Landing from "../src/components/landing/landing"
-import PirepMap from './components/map/map'
+// import PirepMap from './components/map/map'
 class App extends Component {
   goTo(route) {
     this.props.history.replace(`/${route}`);
@@ -19,8 +19,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <Landing/> */}
- <PirepMap/>
+        <Landing/>
+ {/* <PirepMap/> */}
       </div>
     );
   }
