@@ -130,6 +130,52 @@ class PirepMap extends React.Component {
   };
 
   // Creates Google map
+  checkIcon = weather => {
+    if (weather === null || weather === 0) {
+      return "";
+    } else {
+      return (
+        <p className="weather-tag">
+          <strong>Weather:</strong>
+          <img alt="weather icon" src={WeatherIcon(weather)} />
+        </p>
+      );
+    }
+  };
+  checkDescription = des => {
+    if (des === "" || des === null) {
+      return "";
+    } else {
+      return (
+        <p>
+          <strong>Description:</strong> {des}
+        </p>
+      );
+    }
+  };
+  checkTurbulence = turb => {
+    if (turb === "" || turb === null) {
+      return "";
+    } else {
+      return (
+        <p>
+          <strong>Turbulence:</strong> {turb}
+        </p>
+      );
+    }
+  };
+
+  checkIcing = icing => {
+    if (icing === "" || icing === null) {
+      return "";
+    } else {
+      return (
+        <p>
+          <strong>Icing:</strong> {icing}
+        </p>
+      );
+    }
+  };
 
   Map = () => {
     // adding hooks
@@ -139,43 +185,52 @@ class PirepMap extends React.Component {
       <div>
         <GoogleMap
           defaultZoom={4}
-          defaultCenter={this.state.start ? { lat: this.state.start.coordinates.lat, lng: this.state.start.coordinates.lng} : { lat: 40.7128, lng: -74.0060 }}
-          defaultOptions={{ styles: mapStyles }} 
+          defaultCenter={
+            this.state.start
+              ? {
+                  lat: this.state.start.coordinates.lat,
+                  lng: this.state.start.coordinates.lng
+                }
+              : { lat: 40.7128, lng: -74.006 }
+          }
+          defaultOptions={{ styles: mapStyles }}
         >
           {this.state.pirepData.map((pirep, i) => {
             let date = new Date();
             date.setHours(date.getHours() - this.state.hourWindow);
 
-            return pirep.created_at >= date.toISOString() && (
-              <Marker
-                key={pirep.id}
-                position={{
-                  lat: pirep.latitude,
-                  lng: pirep.longitude
-                }}
-                icon={{
-                  url:
-                    TurbIcon(pirep.turbulence) ||
-                    IcingIcon(pirep.icing) ||
-                    WeatherIcon(pirep.weather),
-                  scaledSize: new window.google.maps.Size(30, 40)
-                }}
-                label={{
-                  float: "left",
-                  color: "black",
-                  fontWeight: "bold",
-                  fontSize: "12px",
-                  text: FlightLevel(pirep.altitude),
-                  background: "white",
-                  margin: "10px"
-                }}
-                onClick={() => {
-                  setSelectedPirep(pirep);
-                }}
-                options={{
-                  zIndex: i
-                }}
-              />
+            return (
+              pirep.created_at >= date.toISOString() && (
+                <Marker
+                  key={pirep.id}
+                  position={{
+                    lat: pirep.latitude,
+                    lng: pirep.longitude
+                  }}
+                  icon={{
+                    url:
+                      TurbIcon(pirep.turbulence) ||
+                      IcingIcon(pirep.icing) ||
+                      WeatherIcon(pirep.weather),
+                    scaledSize: new window.google.maps.Size(30, 40)
+                  }}
+                  label={{
+                    float: "left",
+                    color: "black",
+                    fontWeight: "bold",
+                    fontSize: "12px",
+                    text: FlightLevel(pirep.altitude),
+                    background: "white",
+                    margin: "10px"
+                  }}
+                  onClick={() => {
+                    setSelectedPirep(pirep);
+                  }}
+                  options={{
+                    zIndex: i
+                  }}
+                />
+              )
             );
           })}
 
@@ -215,20 +270,23 @@ class PirepMap extends React.Component {
             >
               <div className="pirep-info">
                 <p className="pirep-title">Pilot Report</p>
-                <p><strong>Altitude:</strong> {Altitude(selectedPirep.altitude)} feet</p>
-                <p><strong>Latitude:</strong> {selectedPirep.latitude}</p>
-                <p><strong>Longitude:</strong> {selectedPirep.longitude} </p>
-                <p><strong>Turbulence:</strong> {selectedPirep.turbulence}</p>
-                <p><strong>Icing:</strong> {selectedPirep.icing}</p>
-                <p><strong>Description:</strong> {selectedPirep.description}</p>
-
-                <p className="weather-tag">
-                <strong>Weather:</strong>
-                  <img alt="weather icon" src={WeatherIcon(selectedPirep.weather)} />
+                <p>
+                  <strong>Altitude:</strong> {Altitude(selectedPirep.altitude)}{" "}
+                  feet
                 </p>
                 <p>
-                  {" "}
-                  <strong>Created At:{" "}</strong>
+                  <strong>Latitude:</strong> {selectedPirep.latitude}
+                </p>
+                <p>
+                  <strong>Longitude:</strong> {selectedPirep.longitude}
+                </p>
+                {this.checkTurbulence(selectedPirep.turbulence)}
+                {this.checkIcing(selectedPirep.icing)}
+
+                {this.checkDescription(selectedPirep.description)}
+                {this.checkIcon(selectedPirep.weather)}
+                <p>
+                  <strong>Created At:</strong>
                   {moment(selectedPirep.created_at).format(
                     "MMMM Do YYYY, h:mm:ss a"
                   )}

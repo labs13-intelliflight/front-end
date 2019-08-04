@@ -47,6 +47,9 @@ export default function WeatherIcon(icon) {
   }
   if (icon === 11) {
     return eleven;
+  }
+  if (icon === "") {
+    return null;
   } else {
     return null;
   }

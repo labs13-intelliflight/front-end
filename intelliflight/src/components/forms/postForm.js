@@ -6,13 +6,13 @@ export default class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      altitude: '',
-      turbulence: '',
-      icing: '',
-      weather: '',
-      description: '',
-      latitude: '',
-      longitude: ''
+      altitude: "",
+      turbulence: null,
+      icing: null,
+      weather: null,
+      description: "",
+      latitude: "",
+      longitude: ""
     };
   }
 
@@ -22,24 +22,36 @@ export default class PostForm extends Component {
       .post("https://intelliflightapp.herokuapp.com/api/pireps/", this.state)
       .then(res => {
         this.setState({ post: res.data });
-        console.log(res)
-        alert("Thank you for posting a report")
-      }).then(() => {
-          this.props.updatePireps();
-        })
+        console.log(res);
+        alert("Thank you for posting a report");
+      })
+      .then(() => {
+        this.props.updatePireps();
+      })
       .catch(err => {
-        console.log(err);
-        alert( "Please try again later",err)
+        if (
+          this.state.altitude === "" ||
+          this.state.latitude === "" ||
+          this.state.longitude === ""
+        ) {
+          alert("Please make sure altitude, lat, lng are filled out", err);
+        }
+        if ((this.state.turbulence === null) & (this.state.icing === null)) {
+          alert("please chose an option for turbulence or icing");
+        } else {
+          console.log(err);
+          alert("Please try again later", err);
+        }
       });
-    this.setState({
-      altitude: '',
-      turbulence: '',
-      icing: '',
-      weather: '',
-      description: '',
-      latitude: '',
-      longitude: ''
-    });
+    // this.setState({
+    //   altitude: "",
+    //   turbulence: null,
+    //   icing: null,
+    //   weather: "",
+    //   description: "",
+    //   latitude: "",
+    //   longitude: ""
+    // });
   };
 
   handleChange = e => {
@@ -49,11 +61,12 @@ export default class PostForm extends Component {
   };
 
   render() {
-    // console.log("turbulence:", this.state.turbulence );
-    // console.log( "icing:", this.state.icing );
-    // console.log("weather:", this.state.weather );
-    // console.log("lat:", this.state.latitude);
-    // console.log("long:", this.state.longitude)
+    console.log("alttitude:", this.state.altitude);
+    console.log("turbulence:", this.state.turbulence);
+    console.log("icing:", this.state.icing);
+    console.log("weather:", this.state.weather);
+    console.log("lat:", this.state.latitude);
+    console.log("long:", this.state.longitude);
 
     return (
       <div>
