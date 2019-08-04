@@ -79,9 +79,13 @@ export default class Auth {
       }
     };
 
-    axios.post('https://intelliflight-api.onrender.com/auth/register', user, config)
-      .then(res => {})
-      .catch(err => {})
+    axios.post('https://intelliflightapp.herokuapp.com/auth/register', user, config)
+      .then(res => { 
+        console.log(res.data)
+       })
+      .catch(err => { 
+        console.log(err.response)
+       })
 
       // navigate to the home route
       history.replace('/home');

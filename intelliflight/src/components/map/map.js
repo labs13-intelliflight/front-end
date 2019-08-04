@@ -26,6 +26,7 @@ import FormDialog from "../materialUI/formdialog";
 import FlightPlanFormDialog from "../materialUI/flightplanFormDialog";
 import PIREPHistoryInput from "../forms/PIREPHistoryInput";
 import MenuListComposition from "../materialUI/menu";
+
 class PirepMap extends React.Component {
   state = {
     pirepData: [],
@@ -35,7 +36,7 @@ class PirepMap extends React.Component {
   };
 
   componentDidMount() {
-    Axios.get("https://intelliflight-api.onrender.com/api/pireps")
+    Axios.get("https://intelliflightapp.herokuapp.com/api/pireps")
       .then(res => {
         this.setState({
           pirepData: res.data
@@ -49,7 +50,7 @@ class PirepMap extends React.Component {
   // Update PIREP Markers
 
   updatePireps = () => {
-    Axios.get("https://intelliflight-api.onrender.com/api/pireps")
+    Axios.get("https://intelliflightapp.herokuapp.com/api/pireps")
       .then(res => {
         this.setState({
           pirepData: res.data
